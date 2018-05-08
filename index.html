@@ -7,7 +7,10 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
   </head>
   <body>
-   	<h1>ScriptChecker v1.0</h1>
+   	<h1>ScriptChecker</h1>
+    <p>ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites. 
+It detects Connected Sites "mcjs" code, popup forms, embededd forms, account identification, 
+e-commerce platforms, Google Analytics, and more.</p>
    	<br>
    	<form action ="" method="POST">
    		Enter URL 
@@ -22,8 +25,10 @@
 	</form>
 
 
+    <P><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></P>
 
-   <script > 
+
+<script > 
 
       var xhr = new XMLHttpRequest(); // create XHR object
       xhr.open('GET', '')
@@ -36,9 +41,9 @@
       xhr.open
    </script>
   </body>
-</html>
+</html> 
 
-
+<!--
 var x = document.head.innerHTML;
 var y = x.match(/mcjs/);   // Connected Sites script
 console.log(y);  // what does it look like
@@ -51,3 +56,4 @@ else if (y == null) {
 }
 
 alert(csAlert);
+-->
