@@ -5,9 +5,9 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <title>ScriptChecker - Get Scripty</title>
+  <meta name="description" content="ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites">
+  <meta name="author" content="Josh Brookshire">
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -24,7 +24,7 @@
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="images/script-favicon.png">
 
 </head>
 <body>
@@ -39,6 +39,151 @@
       </div>
     </div>
   </div>
+
+  <!-- Standard Headings -->
+<h1>Heading</h1>
+<h2>Heading</h2>
+<h3>Heading</h3>
+<h4>Heading</h4>
+<h5>Heading</h5>
+<h6>Heading</h6>
+
+  <h1>Heading<span class="heading-font-size"> <code>&lt;h1&gt;</code> 50rem</span></h1>
+            <h2>Heading<span class="heading-font-size"> <code>&lt;h2&gt;</code> 42rem</span></h2>
+
+<!-- Base type size -->
+<p>The base type is 15px over 1.6 line height (24px)</p>
+
+<!-- Other styled text tags -->
+<strong>Bolded</strong>
+<em>Italicized</em>
+<a>Colored</a>
+<u>Underlined</u>
+
+<br>
+<br>
+
+<!-- Standard buttons -->
+<a class="button" href="#">Anchor button</a>
+<button>Button element</button>
+<input type="submit" value="submit input">
+<input type="button" value="button input">
+<br>
+<br>
+
+<!-- Primary buttons -->
+<a class="button button-primary" href="#">Anchor button</a>
+<button class="button-primary">Button element</button>
+<input class="button-primary" type="submit" value="submit input">
+<input class="button-primary" type="button" value="button input">
+
+<!-- Example form -->
+<form>
+  <div class="row">
+    <div class="six columns">
+      <label for="exampleEmailInput">Your email</label>
+      <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+    </div>
+    <div class="six columns">
+      <label for="exampleRecipientInput">Reason for contacting</label>
+      <select class="u-full-width" id="exampleRecipientInput">
+        <option value="Option 1">Questions</option>
+        <option value="Option 2">Admiration</option>
+        <option value="Option 3">Can I get your number?</option>
+      </select>
+    </div>
+  </div>
+  <label for="exampleMessage">Message</label>
+  <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
+  <label class="example-send-yourself-copy">
+    <input type="checkbox">
+    <span class="label-body">Send a copy to yourself</span>
+  </label>
+  <input class="button-primary" type="submit" value="Submit">
+</form>
+
+<!-- Always wrap checkbox and radio inputs in a label and use a <span class="label-body"> inside of it -->
+
+  <ul>
+  <li>Item 1</li>
+  <li>
+    Item 2
+    <ul>
+      <li>Item 2.1</li>
+      <li>Item 2.2</li>
+    </ul>
+  </li>
+  <li>Item 3</li>
+</ul>
+
+<!-- Easily substitute any <ul> or an <ol> to get number lists or sublists. Skeleton doesn't support lists nested deeper than 2 levels -->
+
+
+<!-- Note: The class .u-full-width is just a utility class shorthand for width: 100% -->
+
+
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dave Gamache</td>
+      <td>26</td>
+      <td>Male</td>
+      <td>San Francisco</td>
+    </tr>
+    <tr>
+      <td>Dwayne Johnson</td>
+      <td>42</td>
+      <td>Male</td>
+      <td>Hayward</td>
+    </tr>
+  </tbody>
+</table>
+
+
+ <!-- Form
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <h1><strong>ScriptChecker</strong></h1>
+    <p>ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites. 
+It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification, 
+e-commerce platforms, Google Analytics, and more.</p>
+    <br>
+    <form action ="" method="POST">
+      Enter URL 
+      <input type= "text" name= "URL" value="https://example.com">
+      <br>
+      <br>
+      <div class="button">
+        <input type= "submit" value= "Let's grab those scripts!">
+      </div>
+
+      <div></div>
+  </form>
+
+
+    <P><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></P>
+
+
+<script > 
+
+      var xhr = new XMLHttpRequest(); // create XHR object
+      xhr.open('GET', '')
+      xhr.onload = function(){    // when response has loaded
+        if(xhr.status ===200){    // If server status is OK
+          responseObject = JSON.parse(hxr.responseText);
+         }
+      };
+
+      xhr.open
+   </script>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
