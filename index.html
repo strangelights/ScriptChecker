@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>title</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
+
   <body>
    	<h1>ScriptChecker</h1>
     <p>ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites. 
@@ -27,6 +29,28 @@ e-commerce platforms, Google Analytics, and more.</p>
 
     <P><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></P>
 
+<script>
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://cool-hats-dot-com.myshopify.com/",
+  "method": "GET",
+  "headers": { 
+    "Cache-Control": "no-cache",
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+
+</script>
+
+
+
+<!--
 
 <script > 
 
@@ -40,6 +64,9 @@ e-commerce platforms, Google Analytics, and more.</p>
 
       xhr.open
    </script>
+
+   -->
+
   </body>
 </html> 
 

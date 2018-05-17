@@ -15,7 +15,7 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -25,6 +25,8 @@
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/script-favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -41,12 +43,14 @@
   </div>
 
   <!-- Standard Headings -->
-<h1>Heading</h1>
-<h2>Heading</h2>
-<h3>Heading</h3>
-<h4>Heading</h4>
-<h5>Heading</h5>
-<h6>Heading</h6>
+<div style="margin:20px">
+  <h1>Heading</h1>
+  <h2>Heading</h2>
+  <h3>Heading</h3>
+  <h4>Heading</h4>
+  <h5>Heading</h5>
+  <h6>Heading</h6>
+</div> 
 
   <h1>Heading<span class="heading-font-size"> <code>&lt;h1&gt;</code> 50rem</span></h1>
             <h2>Heading<span class="heading-font-size"> <code>&lt;h2&gt;</code> 42rem</span></h2>
@@ -150,11 +154,13 @@
 
  <!-- Form
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-  <h1><strong>ScriptChecker</strong></h1>
+<div style="margin: 20px">
+  <h1>ScriptChecker</h1>
     <p>ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites. 
 It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification, 
 e-commerce platforms, Google Analytics, and more.</p>
+</div>
+<div style= "margin: 50px">
     <br>
     <form action ="" method="POST">
       Enter URL 
@@ -167,7 +173,7 @@ e-commerce platforms, Google Analytics, and more.</p>
 
       <div></div>
   </form>
-
+</div>
 
     <P><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></P>
 
@@ -175,7 +181,7 @@ e-commerce platforms, Google Analytics, and more.</p>
 <script > 
 
       var xhr = new XMLHttpRequest(); // create XHR object
-      xhr.open('GET', '')
+      xhr.open('GET', 'https://cool-hats-dot-com.myshopify.com/')
       xhr.onload = function(){    // when response has loaded
         if(xhr.status ===200){    // If server status is OK
           responseObject = JSON.parse(hxr.responseText);
@@ -183,6 +189,8 @@ e-commerce platforms, Google Analytics, and more.</p>
       };
 
       xhr.open
+
+      console.log(xhr);
    </script>
 
 <!-- End Document
