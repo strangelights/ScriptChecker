@@ -40,8 +40,8 @@
       <div class="container">
         <div class="row">
           <div class="main-column">
-            <h1 class="main-heading" style="text-align:center;">ScriptChecker</h1>
-            <h6 style="text-align:center;">ScriptChecker is a utility that exposes MailChimp-specific technologies used on websites.
+            <h1 class="main-heading">ScriptChecker</h1>
+            <h6>ScriptChecker is a utility that exposes MailChimp-specific technologies used on websites.
               It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification,e-commerce platforms, Google Analytics, and more.
             </h6> 
           </div>
@@ -59,24 +59,34 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     
   <div class="form-section">
-    <div class="container">
-      <div class="row">
-        <div class="form" style="text-align:center;">
-          <form action ="" method="POST">
-              Enter URL: &nbsp; <input type= "text" name= "URL" value="https://example.com"> &nbsp;
-              <input class="button-primary" type= "submit" value= "Check it!">
-          </form>
-        </div>
-      </div>
+    <div class="form">
+      <form action ="hello" method="GET">
+          <span>Enter URL:&nbsp;</span>
+          <input id="site" type="url" name="site" placeholder="https://example.com" maxlength="128" required="required"> 
+          <span>&nbsp;</span>
+          <input class="button-primary" type= "submit" name="submit-button" value= "Check it!" onclick="userInput()"/>
+      </form>
     </div>
   </div>
   <br>
 
+  <!-- THIS IS TRYING TO GET THE DANG INPUT VALUE TO SHOW IN CONSOLE LOG -->
+
+  <script language="Javascript">
+    function userInput(){
+      return document.getElementById("site").value;
+    }
+    var website = userInput();
+      console.log(website);
+  </script>
+
+
 
   <!-- SCRIPT TESTING
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+<!--
   <script > 
+
 
       var xhr = new XMLHttpRequest(); // create XHR object
       xhr.open('GET', 'https://cool-hats-dot-com.myshopify.com/')
@@ -88,12 +98,12 @@
       xhr.open
       console.log(xhr);
    </script>
-
+-->
 
 
 
 <!-- POPULATE TABLE TESTING
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 
 <div style="text-align:center;">
@@ -103,7 +113,7 @@
 <script>
 function myFunction2() {
     var uid = document.getElementById("myTable").rows[1].cells;
-    uid[1].innerHTML = "1234567890";
+    uid[1].innerHTML = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=1234567890" target="_blank">1234567890</a>';
     var mcjs = document.getElementById("myTable").rows[2].cells;
     mcjs[1].innerHTML = "YES";
     var pop = document.getElementById("myTable").rows[3].cells;
@@ -171,6 +181,9 @@ function myFunction2() {
   <br>
   <br>
   <br>
+
+    <!-- Footer links
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <div class="columns">
     <div class="container">

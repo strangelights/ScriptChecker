@@ -29,9 +29,18 @@
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .main-section {
-  background-color:;
   color: black;
 }
+
+.form{
+  text-align:center;
+}
+
+.main-column{
+   text-align:center;
+
+}
+
 .container {
   position: relative;
   width: 100%;
