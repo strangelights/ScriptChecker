@@ -28,6 +28,10 @@
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.main-section {
+  background-color:;
+  color: black;
+}
 .container {
   position: relative;
   width: 100%;

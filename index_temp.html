@@ -26,15 +26,188 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/script-favicon.png">
 
+  <!-- Jquery load
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
+
 <body>
 
+  <div class="main-section">
+    <br>
+      <div class="container">
+        <div class="row">
+          <div class="main-column">
+            <h1 class="main-heading" style="text-align:center;">ScriptChecker</h1>
+            <h6 style="text-align:center;">ScriptChecker is a utility that exposes MailChimp-specific technologies used on websites.
+              It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification,e-commerce platforms, Google Analytics, and more.
+            </h6> 
+          </div>
+          <div class="right-column">
+          </div>
+        </div>
+      </div>
+  </div>
 
-<!-- Form
+  <br>
+  <br>
+  <br>
+  
+  <!-- Form
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<div style="margin: 20px">
+    
+  <div class="form-section">
+    <div class="container">
+      <div class="row">
+        <div class="form" style="text-align:center;">
+          <form action ="" method="POST">
+              Enter URL: &nbsp; <input type= "text" name= "URL" value="https://example.com"> &nbsp;
+              <input class="button-primary" type= "submit" value= "Check it!">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+
+  <!-- SCRIPT TESTING
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <script > 
+
+      var xhr = new XMLHttpRequest(); // create XHR object
+      xhr.open('GET', 'https://cool-hats-dot-com.myshopify.com/')
+      xhr.onload = function(){    // when response has loaded
+        if(xhr.status ===200){    // If server status is OK
+          responseObject = JSON.parse(hxr.responseText);
+         }
+      };
+      xhr.open
+      console.log(xhr);
+   </script>
+
+
+
+
+<!-- POPULATE TABLE TESTING
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+<div style="text-align:center;">
+  <button onclick="myFunction2()">populate form test</button>
+</div>
+ 
+<script>
+function myFunction2() {
+    var uid = document.getElementById("myTable").rows[1].cells;
+    uid[1].innerHTML = "1234567890";
+    var mcjs = document.getElementById("myTable").rows[2].cells;
+    mcjs[1].innerHTML = "YES";
+    var pop = document.getElementById("myTable").rows[3].cells;
+    pop[1].innerHTML = "NO";
+    var embedded = document.getElementById("myTable").rows[4].cells;
+    embedded[1].innerHTML = "YES";
+    var ecomm = document.getElementById("myTable").rows[5].cells;
+    ecomm [1].innerHTML = "Shopify";
+    var ga = document.getElementById("myTable").rows[6].cells;
+    ga[1].innerHTML = "GA-1234567890";
+}
+</script>
+
+
+
+  <br>
+  <br>
+
+  <!-- Table -- EXPERIMENTAL
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="table-section">
+    <div class="container">
+      <div class="table">
+        <table id="myTable" class="u-full-width">
+            <thead>
+              <tr>
+                <th>Tech</th>
+                <th>Available</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>User ID</td>
+                <td headers="UID">NULL</td>
+              </tr>
+              <tr>
+                <td>MCJS</td>
+                <td headers="MCJS">NULL</td>
+              </tr>
+              <tr>
+                <td>Popup Form</td>
+                <td headers="popup">NULL</td>
+              </tr>
+              <tr>
+                <td>Embedded Form</td>
+                <td headers="embedded">NULL</td>
+              </tr>
+              <tr>
+                <td>Integration</td>
+                <td headers="ecomm">NULL</td>
+              </tr>
+              <tr>
+                <td>Google Analytics</td>
+                <td headers="GA">NULL</td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="columns">
+    <div class="container">
+      <div class="row">
+        <div class="one-third column value" style="text-align:center;">
+          <p><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></p>
+        </div>
+        <div class="one-third column value" style="text-align:center;">
+          <a href="https://github.com/strangelights/ScriptChecker" target="_blank">GitHub</a>
+        </div>
+        <div class="one-third column value" style="text-align:center;">
+          <a style="text-decoration: underline;" onclick="myFunction()">Show elements</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-------- TESTING--hidden elements--REMOVE ME!--->
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+
+<!-------- Keeps the elements hidden by default --->
+
+<div id="myDIV" style="display: none;">
+
+  <div>
   <h1>ScriptChecker</h1>
     <h6>ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites. <br>
         It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification, 
@@ -42,9 +215,9 @@
     </h6> 
 
 
-
+<!-- FORM --------------------
 </div>
-<div style= "margin: 50px">
+<div>
     <br>
     <form action ="" method="POST">
       Enter URL 
@@ -59,42 +232,7 @@
   </form>
 </div>
 
-<p><a style= "margin: 50px" href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a>
-
-<a href="https://github.com/strangelights/ScriptChecker" target="_blank">GitHub</a>
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-<a style="text-decoration: underline;" onclick="myFunction()">Click to show elements</a>
-</p>
-
-
-<!-------- Hideable elements for testing --->
-
-<script>
-  
-  function myFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-
-</script>
-
-
-<!-------- Keeps the elements hidden by default --->
-
-<div id="myDIV" style="display: none;">
-
+-->
  
     <!-- Primary Page Layout
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -146,30 +284,7 @@
     <input class="button-primary" type="submit" value="submit input">
     <input class="button-primary" type="button" value="button input">
 
-    <!-- Example form -->
-    <form>
-      <div class="row">
-        <div class="six columns">
-          <label for="exampleEmailInput">Your email</label>
-          <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
-        </div>
-        <div class="six columns">
-          <label for="exampleRecipientInput">Reason for contacting</label>
-          <select class="u-full-width" id="exampleRecipientInput">
-            <option value="Option 1">Questions</option>
-            <option value="Option 2">Admiration</option>
-            <option value="Option 3">Can I get your number?</option>
-          </select>
-        </div>
-      </div>
-      <label for="exampleMessage">Message</label>
-      <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
-      <label class="example-send-yourself-copy">
-        <input type="checkbox">
-        <span class="label-body">Send a copy to yourself</span>
-      </label>
-      <input class="button-primary" type="submit" value="Submit">
-    </form>
+
 
     <!-- Always wrap checkbox and radio inputs in a label and use a <span class="label-body"> inside of it -->
 
@@ -218,25 +333,6 @@
 
 
 </div>
-
-
-
-
-
-<script > 
-
-      var xhr = new XMLHttpRequest(); // create XHR object
-      xhr.open('GET', 'https://cool-hats-dot-com.myshopify.com/')
-      xhr.onload = function(){    // when response has loaded
-        if(xhr.status ===200){    // If server status is OK
-          responseObject = JSON.parse(hxr.responseText);
-         }
-      };
-
-      xhr.open
-
-      console.log(xhr);
-   </script>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
