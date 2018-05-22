@@ -13,14 +13,17 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- FONT
+  <!-- FONTS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Righteous" rel="stylesheet">   <!-- carousel fonts -->
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/carousel.css">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -34,6 +37,37 @@
 </head>
 
 <body>
+
+
+   <!-- Random Heading Display TESTING
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<div class="content-slider">
+  <div class="slider">
+    <div class="mask">
+      <ul>
+        <li class="anim1">
+          <div class="quote">ScriptChecker Font 1</div>
+        </li>
+        <li class="anim2">
+          <div class="quote">ScriptChecker Font 2</div>     
+        </li>
+        <li class="anim3">
+          <div class="quote">ScriptChecker Font 3</div>         
+        </li>
+        <li class="anim4">
+          <div class="quote">ScriptChecker Font 4</div>        
+        </li>
+        <li class="anim5">
+          <div class="quote">ScriptChecker Font 5</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
 
   <div class="main-section">
     <br>
@@ -60,17 +94,61 @@
     
   <div class="form-section">
     <div class="form">
-      <form action ="hello" method="GET">
+      <form action ="#" method="POST">
           <span>Enter URL:&nbsp;</span>
           <input id="site" type="url" name="site" placeholder="https://example.com" maxlength="128" required="required"> 
           <span>&nbsp;</span>
-          <input class="button-primary" type= "submit" name="submit-button" value= "Check it!" onclick="userInput()"/>
+          <input class="button-primary" type= "submit" name="submit-button" value= "Check it!" onclick="sendData({test:'ok'})">
       </form>
     </div>
   </div>
   <br>
 
-  <!-- THIS IS TRYING TO GET THE DANG INPUT VALUE TO SHOW IN CONSOLE LOG -->
+
+
+
+
+<script>
+
+  function 
+
+  var formSubmission= document.getElementsByName("site")[0].value;
+  console.log(formSubmission);
+
+  /*
+  function sendData(data) {
+  var XHR = new XMLHttpRequest();
+  var FD  = new FormData();
+
+  // Push our data into our FormData object
+  for(name in data) {
+    FD.append(name, data[name]);
+  }
+
+  // Define what happens on successful data submission
+  XHR.addEventListener('load', function(event) {
+    console.log('Yeah! Data sent and response loaded.');
+  });
+
+  // Define what happens in case of error
+  XHR.addEventListener('error', function(event) {
+    console.log('Oops! Something went wrong.');
+  });
+
+  // Set up our request
+  XHR.open('POST', 'https://cool-hats-dot-com.myshopify.com/');
+
+  // Send our FormData object; HTTP headers are set automatically
+  XHR.send(FD);
+}  
+
+*/
+</script>
+
+
+
+
+  <!-- THIS IS TRYING TO GET THE DANG INPUT VALUE TO SHOW IN CONSOLE LOG 
 
   <script language="Javascript">
     function userInput(){
@@ -79,6 +157,10 @@
     var website = userInput();
       console.log(website);
   </script>
+
+  _____________________END SCRIPT
+
+-->
 
 
 
