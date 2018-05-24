@@ -29,7 +29,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/script-favicon.png">
 
-  <!-- Jquery load
+  <!-- Load Jquery
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -40,7 +40,7 @@
 
 
    <!-- Random Heading Display TESTING
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 <div class="content-slider">
   <div class="slider">
@@ -66,8 +66,12 @@
   </div>
 </div>
 
+-->
 
 
+
+  <!-- Heading
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <div class="main-section">
     <br>
@@ -79,13 +83,12 @@
               It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification,e-commerce platforms, Google Analytics, and more.
             </h6> 
           </div>
-          <div class="right-column">
-          </div>
         </div>
       </div>
   </div>
 
   <br>
+
   <br>
   <br>
   
@@ -94,11 +97,11 @@
     
   <div class="form-section">
     <div class="form">
-      <form action ="#" method="POST">
+      <form action ="form-handler.php" method="POST">
           <span>Enter URL:&nbsp;</span>
           <input id="site" type="url" name="site" placeholder="https://example.com" maxlength="128" required="required"> 
           <span>&nbsp;</span>
-          <input class="button-primary" type= "submit" name="submit-button" value= "Check it!" onclick="sendData({test:'ok'})">
+          <input class="button-primary" type= "submit" name="submit-button" value= "Check it!">
       </form>
     </div>
   </div>
@@ -107,66 +110,8 @@
 
 
 
-
-<script>
-
-  function 
-
-  var formSubmission= document.getElementsByName("site")[0].value;
-  console.log(formSubmission);
-
-  /*
-  function sendData(data) {
-  var XHR = new XMLHttpRequest();
-  var FD  = new FormData();
-
-  // Push our data into our FormData object
-  for(name in data) {
-    FD.append(name, data[name]);
-  }
-
-  // Define what happens on successful data submission
-  XHR.addEventListener('load', function(event) {
-    console.log('Yeah! Data sent and response loaded.');
-  });
-
-  // Define what happens in case of error
-  XHR.addEventListener('error', function(event) {
-    console.log('Oops! Something went wrong.');
-  });
-
-  // Set up our request
-  XHR.open('POST', 'https://cool-hats-dot-com.myshopify.com/');
-
-  // Send our FormData object; HTTP headers are set automatically
-  XHR.send(FD);
-}  
-
-*/
-</script>
-
-
-
-
-  <!-- THIS IS TRYING TO GET THE DANG INPUT VALUE TO SHOW IN CONSOLE LOG 
-
-  <script language="Javascript">
-    function userInput(){
-      return document.getElementById("site").value;
-    }
-    var website = userInput();
-      console.log(website);
-  </script>
-
-  _____________________END SCRIPT
-
--->
-
-
-
   <!-- SCRIPT TESTING
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<!--
+  –––––––––––––––––––––––––––––––––––––––––––––––––– 
   <script > 
 
 
