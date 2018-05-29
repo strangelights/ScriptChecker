@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>title</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+   	<h1>ScriptChecker</h1>
+    <p>ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites. 
+It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification, 
+e-commerce platforms, Google Analytics, and more.</p>
+   	<br>
+   	<form action ="" method="POST">
+   		Enter URL 
+	    <input type= "text" name= "URL" value="https://example.com">
+	    <br>
+      <br>
+      <div class="button">
+	   	  <input type= "submit" value= "Let's grab those scripts!">
+      </div>
+
+      <div></div>
+	</form>
+
+
+    <P><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></P>
+
+<script>
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://cool-hats-dot-com.myshopify.com/",
+  "method": "GET",
+  "headers": { 
+    "Cache-Control": "no-cache",
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+
+</script>
+
+
+
+<!--
+
+<script > 
+
+      var xhr = new XMLHttpRequest(); // create XHR object
+      xhr.open('GET', '')
+      xhr.onload = function(){    // when response has loaded
+        if(xhr.status ===200){    // If server status is OK
+          responseObject = JSON.parse(hxr.responseText);
+         }
+      };
+
+      xhr.open
+   </script>
+
+   -->
+
+  </body>
+</html> 
+
+<!--
+var x = document.head.innerHTML;
+var y = x.match(/mcjs/);   // Connected Sites script
+console.log(y);  // what does it look like
+
+if (y == "mcjs") {
+  var csAlert = ("Connected Sites script: YES");
+} 
+else if (y == null) {
+  var csAlert = ("Connected Sites script: NO");
+}
+
+alert(csAlert);
+-->

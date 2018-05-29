@@ -1,59 +1,422 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>title</title>
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
-  </head>
-  <body>
-   	<h1>ScriptChecker</h1>
-    <p>ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites. 
-It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification, 
-e-commerce platforms, Google Analytics, and more.</p>
-   	<br>
-   	<form action ="" method="POST">
-   		Enter URL 
-	    <input type= "text" name= "URL" value="https://example.com">
-	    <br>
-      <br>
-      <div class="button">
-	   	  <input type= "submit" value= "Let's grab those scripts!">
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>ScriptChecker - Get Scripty</title>
+  <meta name="description" content="ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites">
+  <meta name="author" content="Josh Brookshire">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONTS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Righteous" rel="stylesheet">   <!-- carousel fonts -->
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/carousel.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/script-favicon.png">
+
+  <!-- Load Jquery
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+
+   <!-- Random Heading Display TESTING
+  ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+<div class="content-slider">
+  <div class="slider">
+    <div class="mask">
+      <ul>
+        <li class="anim1">
+          <div class="quote">ScriptChecker Font 1</div>
+        </li>
+        <li class="anim2">
+          <div class="quote">ScriptChecker Font 2</div>     
+        </li>
+        <li class="anim3">
+          <div class="quote">ScriptChecker Font 3</div>         
+        </li>
+        <li class="anim4">
+          <div class="quote">ScriptChecker Font 4</div>        
+        </li>
+        <li class="anim5">
+          <div class="quote">ScriptChecker Font 5</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+-->
+
+ <!-- AJAX TESTING
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <p>Click one of the buttons below to combine with a value from the server</p>
+
+<button class="button" id="submit" onClick="functionName(100)">Add 100</button>
+<button class="button" id="submit" onClick="functionName(200)">Add 200</button>
+<button class="button" id="submit" onClick="functionName(300)">Add 300</button>
+
+  <br><br>
+    
+    <div>
+
+      <span id="resource">
+
+        I'm going to display server-generated content
+
+      </span>
+
+    </div>
+
+<!-- Include the JS file so that the javascript function is included -->
+<script src="scripts.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Heading
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="main-section">
+    <br>
+      <div class="container">
+        <div class="row">
+          <div class="main-column">
+            <h1 class="main-heading">ScriptChecker</h1>
+            <h6>ScriptChecker is a utility that exposes MailChimp-specific technologies used on websites.
+              It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification,e-commerce platforms, Google Analytics, and more.
+            </h6> 
+          </div>
+        </div>
       </div>
+  </div>
 
-      <div></div>
-	</form>
+  <br>
+
+  <br>
+  <br>
+  
+  <!-- Form
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    
+  <div class="form-section">
+    <div class="form">
+      <form action ="form-handler.php" method="POST">
+          <span>Enter URL:&nbsp;</span>
+          <input id="site" type="url" name="site" placeholder="https://example.com" maxlength="128" required="required"> 
+          <span>&nbsp;</span>
+          <input class="button-primary" type= "submit" name="submit-button" value= "Check it!">
+      </form>
+    </div>
+  </div>
+  <br>
 
 
-    <P><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></P>
 
 
-<script > 
+  <!-- SCRIPT TESTING
+  –––––––––––––––––––––––––––––––––––––––––––––––––– 
+  <script > 
+
 
       var xhr = new XMLHttpRequest(); // create XHR object
-      xhr.open('GET', '')
+      xhr.open('GET', 'https://cool-hats-dot-com.myshopify.com/')
       xhr.onload = function(){    // when response has loaded
         if(xhr.status ===200){    // If server status is OK
           responseObject = JSON.parse(hxr.responseText);
          }
       };
-
       xhr.open
+      console.log(xhr);
    </script>
-  </body>
-</html> 
-
-<!--
-var x = document.head.innerHTML;
-var y = x.match(/mcjs/);   // Connected Sites script
-console.log(y);  // what does it look like
-
-if (y == "mcjs") {
-  var csAlert = ("Connected Sites script: YES");
-} 
-else if (y == null) {
-  var csAlert = ("Connected Sites script: NO");
-}
-
-alert(csAlert);
 -->
+
+
+
+<!-- POPULATE TABLE TESTING
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+<div style="text-align:center;">
+  <button onclick="myFunction2()">populate form test</button>
+</div>
+ 
+<script>
+function myFunction2() {
+    var uid = document.getElementById("myTable").rows[1].cells;
+    uid[1].innerHTML = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=1234567890" target="_blank">1234567890</a>';
+    var mcjs = document.getElementById("myTable").rows[2].cells;
+    mcjs[1].innerHTML = "YES";
+    var pop = document.getElementById("myTable").rows[3].cells;
+    pop[1].innerHTML = "NO";
+    var embedded = document.getElementById("myTable").rows[4].cells;
+    embedded[1].innerHTML = "YES";
+    var ecomm = document.getElementById("myTable").rows[5].cells;
+    ecomm [1].innerHTML = "Shopify";
+    var ga = document.getElementById("myTable").rows[6].cells;
+    ga[1].innerHTML = "GA-1234567890";
+}
+</script>
+
+
+
+  <br>
+  <br>
+
+  <!-- Table -- EXPERIMENTAL
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="table-section">
+    <div class="container">
+      <div class="table">
+        <table id="myTable" class="u-full-width">
+            <thead>
+              <tr>
+                <th>Tech</th>
+                <th>Available</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>User ID</td>
+                <td headers="UID">NULL</td>
+              </tr>
+              <tr>
+                <td>MCJS</td>
+                <td headers="MCJS">NULL</td>
+              </tr>
+              <tr>
+                <td>Popup Form</td>
+                <td headers="popup">NULL</td>
+              </tr>
+              <tr>
+                <td>Embedded Form</td>
+                <td headers="embedded">NULL</td>
+              </tr>
+              <tr>
+                <td>Integration</td>
+                <td headers="ecomm">NULL</td>
+              </tr>
+              <tr>
+                <td>Google Analytics</td>
+                <td headers="GA">NULL</td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+    <!-- Footer links
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="columns">
+    <div class="container">
+      <div class="row">
+        <div class="one-third column value" style="text-align:center;">
+          <p><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></p>
+        </div>
+        <div class="one-third column value" style="text-align:center;">
+          <a href="https://github.com/strangelights/ScriptChecker" target="_blank">GitHub</a>
+        </div>
+        <div class="one-third column value" style="text-align:center;">
+          <a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/" target="_blank">S.T.A.R. Search</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div style="text-align: center; margin-left: 88px;">
+     <a style="text-decoration:underline;" onclick="myFunction()">Show elements</a>
+  </div>
+  
+
+
+<!-------- TESTING--hidden elements--REMOVE ME!--->
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+
+<!-------- Keeps the elements hidden by default --->
+
+<div id="myDIV" style="display: none;">
+
+  <div>
+  <h1>ScriptChecker</h1>
+    <h6>ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites. <br>
+        It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification, 
+        e-commerce platforms, Google Analytics, and more.
+    </h6> 
+
+
+<!-- FORM --------------------
+</div>
+<div>
+    <br>
+    <form action ="" method="POST">
+      Enter URL 
+      <input type= "text" name= "URL" value="https://example.com">
+      <br>
+      <br>
+      <div>
+        <input class="button-primary" type= "submit" value= "Let's grab those scripts!">
+      </div>
+
+      <div></div>
+  </form>
+</div>
+
+-->
+ 
+    <!-- Primary Page Layout
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div class="container">
+        <div class="row">
+          <div class="one-half column" style="margin-top: 25%">
+            <h4>Basic Page</h4>
+            <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standard Headings -->
+    <div style="margin:20px">
+      <h1>Heading</h1>
+      <h2>Heading</h2>
+      <h3>Heading</h3>
+      <h4>Heading</h4>
+      <h5>Heading</h5>
+      <h6>Heading</h6>
+    </div> 
+
+      <h1>Heading<span class="heading-font-size"> <code>&lt;h1&gt;</code> 50rem</span></h1>
+                <h2>Heading<span class="heading-font-size"> <code>&lt;h2&gt;</code> 42rem</span></h2>
+
+    <!-- Base type size -->
+    <p>The base type is 15px over 1.6 line height (24px)</p>
+
+    <!-- Other styled text tags -->
+    <strong>Bolded</strong>
+    <em>Italicized</em>
+    <a>Colored</a>
+    <u>Underlined</u>
+
+    <br>
+    <br>
+
+    <!-- Standard buttons -->
+    <a class="button" href="#">Anchor button</a>
+    <button>Button element</button>
+    <input type="submit" value="submit input">
+    <input type="button" value="button input">
+    <br>
+    <br>
+
+    <!-- Primary buttons -->
+    <a class="button button-primary" href="#">Anchor button</a>
+    <button class="button-primary">Button element</button>
+    <input class="button-primary" type="submit" value="submit input">
+    <input class="button-primary" type="button" value="button input">
+
+
+
+    <!-- Always wrap checkbox and radio inputs in a label and use a <span class="label-body"> inside of it -->
+
+      <ul>
+      <li>Item 1</li>
+      <li>
+        Item 2
+        <ul>
+          <li>Item 2.1</li>
+          <li>Item 2.2</li>
+        </ul>
+      </li>
+      <li>Item 3</li>
+    </ul>
+
+    <!-- Easily substitute any <ul> or an <ol> to get number lists or sublists. Skeleton doesn't support lists nested deeper than 2 levels -->
+
+
+    <!-- Note: The class .u-full-width is just a utility class shorthand for width: 100% -->
+
+
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Sex</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dave Gamache</td>
+          <td>26</td>
+          <td>Male</td>
+          <td>San Francisco</td>
+        </tr>
+        <tr>
+          <td>Dwayne Johnson</td>
+          <td>42</td>
+          <td>Male</td>
+          <td>Hayward</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+</div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
