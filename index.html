@@ -96,7 +96,7 @@
     
   <div class="form-section">
     <div class="form">
-      <form action ="form-handler.php" method="POST">
+      <form id="site" action="php/form-handler.php" method="POST">
           <span>Enter URL:&nbsp;</span>
           <input id="site" type="url" name="site" placeholder="https://example.com" maxlength="128" required="required"> 
           <span>&nbsp;</span>
@@ -107,10 +107,47 @@
   <span id="siteHTML"></span> <!-- here's where to display the URL -->
    <br>
 
+<!-- AJAX Testing
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<script type="text/javascript"> // AJAX FORM SUBMISSION TESTING    // So this works to override the html5 form submission above see p.395 of Duckett
+  $("#site").on("submit", function(e){
+    e.preventDefault();
+    var formURL = $("#site").serialize();
+    $.post("php/proxy.php", formURL, function(data){       
+      $("#serverContent").html(data);
+      
+      console.log(formURL);
+      })
+    });
+  
+  
+</script>
+
+
+
+
+<script type = "text/javascript"> //VANILLA AJAX TESTING
+  var xhr = new XMLHttpRequest();
+  xhr.open ("GET", "php/form-handler.php", true);
+  xhr.send(null);
+  //response
+  xhr.onload = function(){
+    if (xhr.status === 200){
+      console.log("pass! - VANILLA");
+    }
+  }
+</script>
+
+<script type="text/javascript"> //JQUERY TESTING 
+  
+</script>
+
+<span id="serverContent">test</span> <!-- WHERE JQUERY AJAX WILL DUMP THE GOODS -->
+
 
 <!-- POPULATE TABLE TESTING
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
 
 <div style="text-align:center;">
   <button onclick="myFunction2()">populate form test</button>
@@ -132,8 +169,6 @@ function myFunction2() {
     ga[1].innerHTML = "GA-1234567890";
 }
 </script>
-
-
 
   <br>
 
@@ -185,7 +220,6 @@ function myFunction2() {
   <br>
   <br>
   
-
   <!-- Footer links
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
