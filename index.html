@@ -32,37 +32,11 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+
+
 </head>
 
 <body>
-
-
-
- <!-- AJAX TESTING
-  ––––––––––––––––––––––––––––––––––––––––––––––––––
-
-  <p>Click one of the buttons below to combine with a value from the server</p>
-
-<button class="button" id="submit" onClick="functionName(100)">Add 100</button>
-<button class="button" id="submit" onClick="functionName(200)">Add 200</button>
-<button class="button" id="submit" onClick="functionName(300)">Add 300</button>
-
-  <br><br>
-    
-    <div>
-
-      <span id="resource">
-
-        I'm going to display server-generated content
-
-      </span>
-
-    </div>
--->
-
-<!-- Include the JS file so that the javascript function is included -->
-<script src="js/scripts.js"></script>
-
 
   <!-- DARK THEME TESTING
   –––––––––––––––––––––––––––––––––––––––––––––––––– 
@@ -83,41 +57,45 @@
             <h1 class="main-heading">ScriptChecker</h1>
             <h6>ScriptChecker is a utility that exposes MailChimp-specific technologies used on websites.
               It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification,e-commerce platforms, Google Analytics, and more.
-            </h6> 
+            </h6>
           </div>
         </div>
       </div>
   </div>
   <br>
-  <br>
   
   <!-- Form
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    
+  
   <div class="form-section">
-    <div class="form">
-      <form id="site" action="php/form-handler.php" method="POST">
-          <span>Enter URL:&nbsp;</span>
-          <input id="site" type="url" name="site" placeholder="https://example.com" maxlength="128" required="required"> 
-          <span>&nbsp;</span>
-          <input class="button-primary" type= "submit" name="submit" onclick="" value= "Check it!">
-      </form>
-    </div>
+    <form id="siteForm" action="php/form-handler.php" method="POST">
+        <span>Enter URL:&nbsp;</span>
+        <input id="siteURL" type="url" name="siteX" placeholder="https://example.com" maxlength="128" required="required"> 
+        <span>&nbsp;</span>
+        <input class="button-primary" type= "submit" name="submit" onclick="" value= "Check it!">
+    </form>
+    <span id="useMe">Use me: https://mailchimp.com</span> <!--------------DELETE ME! ----------------------------------> 
+    <div id="serverContent">Placeholder</div>                  <!-- WHERE JQUERY AJAX WILL DUMP THE GOODS -->
   </div>
-  <span id="siteHTML"></span> <!-- here's where to display the URL -->
-   <br>
+  <br>
+  
 
 <!-- AJAX Testing
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <script type="text/javascript"> // AJAX FORM SUBMISSION TESTING    // So this works to override the html5 form submission above see p.395 of Duckett
-  $("#site").on("submit", function(e){
-    e.preventDefault();
-    var formURL = $("#site").serialize();
+  $("#siteForm").on("submit", function(e){  // on form submission call the function
+    e.preventDefault();                 // prevent the html form's submit action from occurring
+    var formURL = $("#siteForm").serialize();
     $.post("php/proxy.php", formURL, function(data){       
       $("#serverContent").html(data);
       
-      console.log(formURL);
+      console.log("this is it: " + formURL);
+
+
+      
+      // var formInput = document.getElementsByName("siteURL")[0].value; // a cleaner way to store input as js variable -- this should be pretty portable
+      //console.log(formInput);
       })
     });
   
@@ -126,8 +104,7 @@
 
 
 
-
-<script type = "text/javascript"> //VANILLA AJAX TESTING
+<script type = "text/javascript"> //VANILLA AJAX TESTING - CAN BE DELETED
   var xhr = new XMLHttpRequest();
   xhr.open ("GET", "php/form-handler.php", true);
   xhr.send(null);
@@ -139,11 +116,7 @@
   }
 </script>
 
-<script type="text/javascript"> //JQUERY TESTING 
-  
-</script>
 
-<span id="serverContent">test</span> <!-- WHERE JQUERY AJAX WILL DUMP THE GOODS -->
 
 
 <!-- POPULATE TABLE TESTING
