@@ -58,6 +58,17 @@
   float: left;
   box-sizing: border-box; }
 
+.footer {
+   text-align: center;
+   margin: auto;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+  }
+
 /* For devices larger than 400px */
 @media (min-width: 400px) {
   .container {
