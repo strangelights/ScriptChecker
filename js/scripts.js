@@ -6,4 +6,4 @@ function getURL(){
 			$('#resource').replaceWith(result);
 
 		}); // close the .post code block
-}
+} //vscode test 

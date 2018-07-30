@@ -66,52 +66,53 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     
     <div class="form-section">
-      <form id="siteForm" action="php/form-handler.php" method="POST">
+      <form id="siteForm" action="" method="POST">
           <span>Enter URL:&nbsp;</span>
           <input id="siteURL" type="url" name="siteX" placeholder="https://example.com" maxlength="128" required="required"> 
           <span>&nbsp;</span>
           <input class="button-primary" type= "submit" name="submit" onclick="" value= "Check it!">
       </form>
       <span id="useMe">Use me: https://mailchimp.com</span> <!--------------DELETE ME! ----------------------------------> 
-      <div id="serverContent">Placeholder</div>                  <!-- WHERE JQUERY AJAX WILL DUMP THE GOODS -->
+      <div id="errorDisplay"></div>                  <!-- WHERE JQUERY AJAX WILL DUMP THE GOODS -->
     </div>
     <br>
     
 
-  <!-- AJAX Testing
+  <!-- AJAX CALL AND RETURN
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-  <script type="text/javascript"> // AJAX FORM SUBMISSION TESTING    // So this works to override the html5 form submission above see p.395 of Duckett
+  <script type="text/javascript"> 
+    var formURL,
+        curlResponse,
+        tempDiv,
+        checkMCJS;
+
+  // AJAX FORM SUBMISSION TESTING    // So this works to override the html5 form submission above see p.395 of Duckett
     $("#siteForm").on("submit", function(e){  // on form submission call the function
       e.preventDefault();                 // prevent the html form's submit action from occurring
-      var formURL = $("#siteForm").serialize();
-      $.post("php/proxy.php", formURL, function(data){       
-        $("#serverContent").html(data);
-        
-        console.log("this is it: " + formURL);
+      formURL = $("#siteForm").serialize();
+      $.ajax({
+        url : 'php/proxy.php',
+        type : 'POST',
+        data : formURL,
+        success : function (data) {
+           curlResponse = data; // pass server data back into variable
+           console.log(curlResponse); // test to prove server data is sent 
+           tempDiv = document.createElement('div');
+           tempDiv.innerHTML = curlResponse;
+           console.log(tempDiv); // test to prove string 
+           //var checkHead = curlResponse.head.innerHTML;  // this isn't working because curResponse doesn't exist in the DOM
+           parse = $.parseHTML(curlResponse); // this can probably be removed (along with line below)
+           console.log(parse);
 
-
-        
-        // var formInput = document.getElementsByName("siteURL")[0].value; // a cleaner way to store input as js variable -- this should be pretty portable
-        //console.log(formInput);
-        })
+          },
+        error : function () {
+           alert("There was an error. Please try again.");
+          }
+        });
       });
-    
-    
-  </script>
 
-
-
-  <script type = "text/javascript"> //VANILLA AJAX TESTING - CAN BE DELETED
-    var xhr = new XMLHttpRequest();
-    xhr.open ("GET", "php/form-handler.php", true);
-    xhr.send(null);
-    //response
-    xhr.onload = function(){
-      if (xhr.status === 200){
-        console.log("pass! - VANILLA");
-      }
-    }
+     
   </script>
 
 
@@ -205,17 +206,13 @@
       </div>
     </div>
     -->
-   
     </main>
     <footer>
       <div class="footer">
        <a href="https://github.com/strangelights/highlighter"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="GitHub Logo" title="Git in the car nerd!" style="height:25px;">
           <p><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></p>
-     
       </div>
     </footer>
-    <!-- End Document
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     </div>
   </body>
 </html>
