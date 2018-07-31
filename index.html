@@ -68,7 +68,7 @@
     <div class="form-section">
       <form id="siteForm" action="" method="POST">
           <span>Enter URL:&nbsp;</span>
-          <input id="siteURL" type="url" name="siteX" placeholder="https://example.com" maxlength="128" required="required"> 
+          <input id="siteURL" type="url" name="siteURL" placeholder="https://example.com" maxlength="128" required="required"> 
           <span>&nbsp;</span>
           <input class="button-primary" type= "submit" name="submit" onclick="" value= "Check it!">
       </form>
@@ -97,13 +97,15 @@
         data : formURL,
         success : function (data) {
            curlResponse = data; // pass server data back into variable
-           console.log(curlResponse); // test to prove server data is sent 
-           tempDiv = document.createElement('div');
+           //console.log(curlResponse); // test to prove server data is sent 
+           tempDiv = document.createElement('html');
            tempDiv.innerHTML = curlResponse;
-           console.log(tempDiv); // test to prove string 
-           //var checkHead = curlResponse.head.innerHTML;  // this isn't working because curResponse doesn't exist in the DOM
-           parse = $.parseHTML(curlResponse); // this can probably be removed (along with line below)
-           console.log(parse);
+           console.log(tempDiv); // test to prove string
+           checkMCJS = curlResponse.match(/mcjs/);
+           console.log(checkMCJS);
+    
+          // checkUID = curlResponse.match();
+            
 
           },
         error : function () {
