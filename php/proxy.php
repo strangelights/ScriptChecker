@@ -24,14 +24,7 @@ curl_close($ch);
 
 // do anything you want with your response
 
-// $html = str_get_html("$response");
-
-
-
 echo $response;
-
-
-
 
  ?>
 
