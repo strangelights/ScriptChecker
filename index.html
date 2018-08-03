@@ -53,7 +53,7 @@
           <div class="row">
             <div class="main-column">
               <h1 class="main-heading">ScriptChecker</h1>
-              <h6>ScriptChecker is a utility that exposes MailChimp-specific technologies used on websites.
+              <h6>ScriptChecker is a utility that exposes MailChimp-specific technologies used on websites.<br>
                 It detects Connected Sites "mcjs" code, popup forms, embedded forms, account identification,e-commerce platforms, Google Analytics, and more.
               </h6>
             </div>
@@ -82,30 +82,68 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <script type="text/javascript"> 
-    var formURL,
-        curlResponse,
-        tempDiv,
-        checkMCJS;
+    var $formURL,
+        $curlResponse,
+        $tempDiv,
+        $checkMCJS;
 
   // AJAX FORM SUBMISSION TESTING    // So this works to override the html5 form submission above see p.395 of Duckett
     $("#siteForm").on("submit", function(e){  // on form submission call the function
       e.preventDefault();                 // prevent the html form's submit action from occurring
-      formURL = $("#siteForm").serialize();
+      $formURL = $("#siteForm").serialize();
       $.ajax({
         url : 'php/proxy.php',
         type : 'POST',
-        data : formURL,
+        data : $formURL,
         success : function (data) {
-           curlResponse = data; // pass server data back into variable
-           //console.log(curlResponse); // test to prove server data is sent 
-           tempDiv = document.createElement('html');
-           tempDiv.innerHTML = curlResponse;
-           console.log(tempDiv); // test to prove string
-           checkMCJS = curlResponse.match(/mcjs/);
-           console.log(checkMCJS);
-    
-          // checkUID = curlResponse.match();
-            
+          $curlResponse = data; // pass server data back into variable
+					$parser = new DOMParser();
+					$doc = $parser.parseFromString($curlResponse, "text/html");
+          console.log($doc);
+
+
+          //-----------Connect Sites Script-----------
+
+					var $head = $doc.head.innerHTML;
+          var $mcjs = $head.match(/mcjs/);
+          if ($mcjs == "mcjs"){
+            var $mcjsFound = document.getElementById("myTable").rows[2].cells;
+            $mcjsFound[1].innerHTML = "YES";
+          } else if ($mcjs == null){
+            var $mcjsNotFound = document.getElementById("myTable").rows[2].cells;
+            $mcjsNotFound[1].innerHTML = "NOT FOUND";
+          }
+			
+          //----------Popup Script------------
+
+          var $body = $doc.body.innerHTML;
+          var $popupForm = $body.match(/signup-forms\/popup\/embed.js/); // MC Pop Up Form code
+          if ($popupForm == "signup-forms/popup/embed.js"){
+            var $popupFound = document.getElementById("myTable").rows[3].cells;
+            $popupFound[1].innerHTML = "YES";
+            console.log($popupForm);
+          } else if ($popupForm == null){
+              var $popupNotFound = document.getElementById("myTable").rows[3].cells;
+            $popupNotFound[1].innerHTML = "NOT FOUND";
+          }
+
+          // TO DO: CONFIRM IF POPUP FORM CAN BE IN HEAD AS WELL AND ADD IF STATEMENT FOR SCENARIO
+
+
+          //-----------Embedded Script-----------
+
+          var $embeddedForm = $body.match(/mc-embed/); // MC Embedded Form script
+          if ($embeddedForm == 'mc-embed') {
+            var $embeddedFound = document.getElementById("myTable").rows[4].cells;
+            $embeddedFound[1].innerHTML = "YES";
+          }
+          else if ($embeddedForm == null) {
+            var $embeddedNotFound = document.getElementById("myTable").rows[4].cells;
+            $embeddedNotFound[1].innerHTML = "NOT FOUND";
+          }
+
+        
+          //----------Error Process------------
 
           },
         error : function () {
@@ -114,7 +152,7 @@
         });
       });
 
-     
+  
   </script>
 
 
@@ -161,27 +199,27 @@
               <tbody>
                 <tr>
                   <td>User ID</td>
-                  <td headers="UID">NULL</td>
+                  <td headers="UID">??</td>
                 </tr>
                 <tr>
                   <td>MCJS</td>
-                  <td headers="MCJS">NULL</td>
+                  <td headers="MCJS">??</td>
                 </tr>
                 <tr>
                   <td>Popup Form</td>
-                  <td headers="popup">NULL</td>
+                  <td headers="popup">??</td>
                 </tr>
                 <tr>
                   <td>Embedded Form</td>
-                  <td headers="embedded">NULL</td>
+                  <td headers="embedded">??</td>
                 </tr>
                 <tr>
                   <td>Integration</td>
-                  <td headers="ecomm">NULL</td>
+                  <td headers="ecomm">Coming Soon!</td>
                 </tr>
                 <tr>
                   <td>Google Analytics</td>
-                  <td headers="GA">NULL</td>
+                  <td headers="GA">Coming Soon!</td>
                 </tr>
               </tbody>
           </table>
