@@ -101,6 +101,25 @@
 					$doc = $parser.parseFromString($curlResponse, "text/html");
           console.log($doc);
 
+          //-----------Returning UID------------
+
+          
+
+          var $mcjsElement = $doc.getElementById('mcjs');
+          var $mcjsTextContent = $mcjsElement.textContent;
+          var $mcjsSplit = $mcjsTextContent.split("/");
+          var $mcjsUID = $mcjsSplit[6]
+          var $length = $mcjsUID.length;
+          if ($length == 25){
+            var $uid = document.getElementById("myTable").rows[1].cells;
+            $uid[1].innerHTML = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=\" + $uid" \" target="_blank">$uid</a>';
+
+          }else if ($mcjsElement == null) {
+            alert("UID NOT FOUND");
+          }  // almost there finish in HackerTime
+          
+
+          
 
           //-----------Connect Sites Script-----------
 
@@ -113,7 +132,19 @@
             var $mcjsNotFound = document.getElementById("myTable").rows[2].cells;
             $mcjsNotFound[1].innerHTML = "NOT FOUND";
           }
-			
+
+          // EXPERIMENTAL GET UID
+
+          /*
+          $head.match(/mcjs/);
+          console.log($mcjs);
+          var $getUID = $mcjs.index;
+          console.log($getUID);
+			     */
+
+
+
+
           //----------Popup Script------------
 
           var $body = $doc.body.innerHTML;
@@ -121,7 +152,6 @@
           if ($popupForm == "signup-forms/popup/embed.js"){
             var $popupFound = document.getElementById("myTable").rows[3].cells;
             $popupFound[1].innerHTML = "YES";
-            console.log($popupForm);
           } else if ($popupForm == null){
               var $popupNotFound = document.getElementById("myTable").rows[3].cells;
             $popupNotFound[1].innerHTML = "NOT FOUND";
