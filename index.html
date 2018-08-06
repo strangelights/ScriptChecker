@@ -106,17 +106,32 @@
           
 
           var $mcjsElement = $doc.getElementById('mcjs');
+          if ($mcjsElement == null){
+            alert("UID NOT FOUND");
+            // this is where checking for Shopify's script formatting needs to go
+          } else{
           var $mcjsTextContent = $mcjsElement.textContent;
           var $mcjsSplit = $mcjsTextContent.split("/");
           var $mcjsUID = $mcjsSplit[6]
           var $length = $mcjsUID.length;
           if ($length == 25){
             var $uid = document.getElementById("myTable").rows[1].cells;
+            var $baseURL = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=" target="_blank"></a>';
             $uid[1].innerHTML = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=\" + $uid" \" target="_blank">$uid</a>';
+                
+            function mCAdminUrl(element)
+            {
+                var baseZipCode = '48180';
+                if (element.href.slice(-baseZipCode.length) !== baseZipCode){
+                    element.href += baseZipCode;
+                }
+            }
 
-          }else if ($mcjsElement == null) {
-            alert("UID NOT FOUND");
+                } 
           }  // almost there finish in HackerTime
+             // add integration detection - maybe change to platform detection?
+             // link to star search for each integration
+             // add google analytics to index page
           
 
           
@@ -197,7 +212,7 @@
   <script>
   function myFunction2() {
       var uid = document.getElementById("myTable").rows[1].cells;
-      uid[1].innerHTML = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=1234567890" target="_blank">1234567890</a>';
+      uid[1].innerHTML = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=" target="_blank"></a>';
       var mcjs = document.getElementById("myTable").rows[2].cells;
       mcjs[1].innerHTML = "YES";
       var pop = document.getElementById("myTable").rows[3].cells;
