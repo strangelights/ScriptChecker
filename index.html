@@ -72,10 +72,8 @@
           <span>&nbsp;</span>
           <input class="button-primary" type= "submit" name="submit" onclick="" value= "Check it!">
       </form>
-      <span id="useMe">Use me: https://mailchimp.com</span> <!--------------DELETE ME! ----------------------------------> 
-      <div id="errorDisplay"></div>                  <!-- WHERE JQUERY AJAX WILL DUMP THE GOODS -->
+      <div id="errorDisplay"></div>                  <!-- WHERE AJAX WILL DUMP THE GOODS -->
     </div>
-    <br>
     
 
   <!-- AJAX CALL AND RETURN
@@ -86,6 +84,79 @@
         $curlResponse,
         $tempDiv,
         $checkMCJS;
+
+   //-----------Returning UID------------
+
+    function findUID(){
+      var $mcjsElement = $doc.getElementById('mcjs'); // checks for standard Connected Sites script (not Shopify version)
+      if ($mcjsElement == null){
+        alert("UID NOT FOUND");
+          var $head = $doc.head.innerHTML;
+          var $mcjs = $head.match(/mcjs/);
+      } else{
+      var $mcjsTextContent = $mcjsElement.textContent;
+      var $mcjsSplit = $mcjsTextContent.split("/");
+      var $mcjsUID = $mcjsSplit[6]
+      var $length = $mcjsUID.length;
+      if ($length == 25){
+        var $uid = document.getElementById("myTable").rows[1].cells;
+        $uid[1].innerHTML = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' + $mcjsUID + '" ' + 'target="_blank">' + $mcjsUID + '</a>';
+              } 
+            }  
+    }
+
+   //-----------Connect Sites Script-----------
+
+      function findMCJS(){
+        var $head = $doc.head.innerHTML;
+        var $mcjs = $head.match(/mcjs/);
+        if ($mcjs == "mcjs"){
+          var $mcjsFound = document.getElementById("myTable").rows[2].cells;
+          $mcjsFound[1].innerHTML = "YES";
+        } else if ($mcjs == null){
+          var $mcjsNotFound = document.getElementById("myTable").rows[2].cells;
+          $mcjsNotFound[1].innerHTML = "NOT FOUND";
+        }
+
+      }
+  
+    //----------Popup Script------------
+    
+    function findPopup(){
+      var $body = $doc.body.innerHTML;
+      var $popupForm = $body.match(/signup-forms\/popup\/embed.js/); // MC Pop Up Form code
+      if ($popupForm == "signup-forms/popup/embed.js"){
+        var $popupFound = document.getElementById("myTable").rows[3].cells;
+        $popupFound[1].innerHTML = "YES";
+      } else if ($popupForm == null){
+          var $popupNotFound = document.getElementById("myTable").rows[3].cells;
+        $popupNotFound[1].innerHTML = "NOT FOUND";
+      }
+    } // TO DO: CONFIRM IF POPUP FORM CAN BE IN HEAD AS WELL AND ADD IF STATEMENT FOR SCENARIO
+
+
+    //-----------Embedded Script-----------
+
+    function findEmbedded(){
+      var $body = $doc.body.innerHTML;
+      var $embeddedForm = $body.match(/mc-embed/); // MC Embedded Form script
+      if ($embeddedForm == 'mc-embed') {
+        var $embeddedFound = document.getElementById("myTable").rows[4].cells;
+        $embeddedFound[1].innerHTML = "YES";
+      }
+      else if ($embeddedForm == null) {
+        var $embeddedNotFound = document.getElementById("myTable").rows[4].cells;
+        $embeddedNotFound[1].innerHTML = "NOT FOUND";
+      }
+    }
+   
+
+     // add integration detection - maybe change to platform detection?
+     // link to star search for each integration
+     // add google analytics to index page
+  
+
+
 
   // AJAX FORM SUBMISSION TESTING    // So this works to override the html5 form submission above see p.395 of Duckett
     $("#siteForm").on("submit", function(e){  // on form submission call the function
@@ -100,93 +171,10 @@
 					$parser = new DOMParser();
 					$doc = $parser.parseFromString($curlResponse, "text/html");
           console.log($doc);
-
-          //-----------Returning UID------------
-
-          
-
-          var $mcjsElement = $doc.getElementById('mcjs');
-          if ($mcjsElement == null){
-            alert("UID NOT FOUND");
-            // this is where checking for Shopify's script formatting needs to go
-          } else{
-          var $mcjsTextContent = $mcjsElement.textContent;
-          var $mcjsSplit = $mcjsTextContent.split("/");
-          var $mcjsUID = $mcjsSplit[6]
-          var $length = $mcjsUID.length;
-          if ($length == 25){
-            var $uid = document.getElementById("myTable").rows[1].cells;
-            var $baseURL = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=" target="_blank"></a>';
-            $uid[1].innerHTML = '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=\" + $uid" \" target="_blank">$uid</a>';
-                
-            function mCAdminUrl(element)
-            {
-                var baseZipCode = '48180';
-                if (element.href.slice(-baseZipCode.length) !== baseZipCode){
-                    element.href += baseZipCode;
-                }
-            }
-
-                } 
-          }  // almost there finish in HackerTime
-             // add integration detection - maybe change to platform detection?
-             // link to star search for each integration
-             // add google analytics to index page
-          
-
-          
-
-          //-----------Connect Sites Script-----------
-
-					var $head = $doc.head.innerHTML;
-          var $mcjs = $head.match(/mcjs/);
-          if ($mcjs == "mcjs"){
-            var $mcjsFound = document.getElementById("myTable").rows[2].cells;
-            $mcjsFound[1].innerHTML = "YES";
-          } else if ($mcjs == null){
-            var $mcjsNotFound = document.getElementById("myTable").rows[2].cells;
-            $mcjsNotFound[1].innerHTML = "NOT FOUND";
-          }
-
-          // EXPERIMENTAL GET UID
-
-          /*
-          $head.match(/mcjs/);
-          console.log($mcjs);
-          var $getUID = $mcjs.index;
-          console.log($getUID);
-			     */
-
-
-
-
-          //----------Popup Script------------
-
-          var $body = $doc.body.innerHTML;
-          var $popupForm = $body.match(/signup-forms\/popup\/embed.js/); // MC Pop Up Form code
-          if ($popupForm == "signup-forms/popup/embed.js"){
-            var $popupFound = document.getElementById("myTable").rows[3].cells;
-            $popupFound[1].innerHTML = "YES";
-          } else if ($popupForm == null){
-              var $popupNotFound = document.getElementById("myTable").rows[3].cells;
-            $popupNotFound[1].innerHTML = "NOT FOUND";
-          }
-
-          // TO DO: CONFIRM IF POPUP FORM CAN BE IN HEAD AS WELL AND ADD IF STATEMENT FOR SCENARIO
-
-
-          //-----------Embedded Script-----------
-
-          var $embeddedForm = $body.match(/mc-embed/); // MC Embedded Form script
-          if ($embeddedForm == 'mc-embed') {
-            var $embeddedFound = document.getElementById("myTable").rows[4].cells;
-            $embeddedFound[1].innerHTML = "YES";
-          }
-          else if ($embeddedForm == null) {
-            var $embeddedNotFound = document.getElementById("myTable").rows[4].cells;
-            $embeddedNotFound[1].innerHTML = "NOT FOUND";
-          }
-
+          findUID();
+          findMCJS();
+          findPopup();
+          findEmbedded();
         
           //----------Error Process------------
 
@@ -202,12 +190,14 @@
 
 
 
-  <!-- POPULATE TABLE TESTING
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- POPULATE TABLE TESTING (SAFE TO REMOVE)
+ 
 
   <div style="text-align:center;">
     <button onclick="myFunction2()">populate form test</button>
   </div>
+
+   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <script>
   function myFunction2() {
@@ -226,8 +216,6 @@
   }
   </script>
 
-    <br>
-
     <!-- Table -- EXPERIMENTAL
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
@@ -237,8 +225,8 @@
           <table id="myTable" class="u-full-width">
               <thead>
                 <tr>
-                  <th>Tech</th>
-                  <th>Available</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
