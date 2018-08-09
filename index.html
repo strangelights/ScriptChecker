@@ -90,7 +90,11 @@
     function findUID(){
       var $mcjsElement = $doc.getElementById('mcjs'); // checks for standard Connected Sites script (not Shopify version)
       if ($mcjsElement == null){
-        alert("UID NOT FOUND");
+        var $head = $doc.head.innerHTML;
+        var $mcjs = $head.match(/mcjs/);
+        var test = $mcjs.index;
+        console.log($mcjs);
+        console.log(test);
           var $head = $doc.head.innerHTML;
           var $mcjs = $head.match(/mcjs/);
       } else{
@@ -143,12 +147,46 @@
       if ($embeddedForm == 'mc-embed') {
         var $embeddedFound = document.getElementById("myTable").rows[4].cells;
         $embeddedFound[1].innerHTML = "YES";
-      }
-      else if ($embeddedForm == null) {
+      }else if ($embeddedForm == null) {
         var $embeddedNotFound = document.getElementById("myTable").rows[4].cells;
         $embeddedNotFound[1].innerHTML = "NOT FOUND";
       }
     }
+
+     //-----------E-commerce Platform-----------
+
+     /* function findPlatform(){
+        var $body = $doc.body.innerHTML;
+        if () {
+
+        }else if () {
+
+        }else if () {
+
+        }else if () {
+
+        }else {
+
+        }
+     }
+
+     */
+
+      //-----------Google Analytics-----------
+
+      function findAnalytics(){
+        var $head = $doc.head.innerHTML;
+        var $findUA = $head.match(/UA-/);
+        if ($findUA == "UA-"){
+          var $analyticsFound = document.getElementById("myTable").rows[6].cells;
+          $analyticsFound[1].innerHTML = "YES";
+  
+        } else if ($findUA == null){
+          var $analyticsNotFound = document.getElementById("myTable").rows[6].cells;
+          $analyticsNotFound[1].innerHTML = "NOT FOUND";
+
+        }
+      }
    
 
      // add integration detection - maybe change to platform detection?
@@ -156,18 +194,15 @@
      // add google analytics to index page
   
 
-
-
-  // AJAX FORM SUBMISSION TESTING    // So this works to override the html5 form submission above see p.395 of Duckett
     $("#siteForm").on("submit", function(e){  // on form submission call the function
-      e.preventDefault();                 // prevent the html form's submit action from occurring
+      e.preventDefault();                 // prevent the html form's submit action from occurring (see p.395 of Duckett)
       $formURL = $("#siteForm").serialize();
       $.ajax({
         url : 'php/proxy.php',
         type : 'POST',
         data : $formURL,
         success : function (data) {
-          $curlResponse = data; // pass server data back into variable
+          $curlResponse = data;           // pass server data back into variable
 					$parser = new DOMParser();
 					$doc = $parser.parseFromString($curlResponse, "text/html");
           console.log($doc);
@@ -175,12 +210,10 @@
           findMCJS();
           findPopup();
           findEmbedded();
-        
-          //----------Error Process------------
-
+          findAnalytics();
           },
-        error : function () {
-           alert("There was an error. Please try again.");
+        error : function () {         
+           alert("There was an error. Please try again."); // In case of server error
           }
         });
       });
@@ -188,16 +221,6 @@
   
   </script>
 
-
-
-  <!-- POPULATE TABLE TESTING (SAFE TO REMOVE)
- 
-
-  <div style="text-align:center;">
-    <button onclick="myFunction2()">populate form test</button>
-  </div>
-
-   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <script>
   function myFunction2() {
@@ -247,12 +270,12 @@
                   <td headers="embedded">??</td>
                 </tr>
                 <tr>
-                  <td>Integration</td>
+                  <td>Ecommerce Platform</td>
                   <td headers="ecomm">Coming Soon!</td>
                 </tr>
                 <tr>
                   <td>Google Analytics</td>
-                  <td headers="GA">Coming Soon!</td>
+                  <td headers="GA">??</td>
                 </tr>
               </tbody>
           </table>
