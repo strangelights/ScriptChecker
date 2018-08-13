@@ -1,8 +1,7 @@
 <?php 
 
-// this page will serve up HTML scraped via the form handler PHP and pass it back to the front end via AJAX
+// this page will serve up HTML scraped via cURL and pass it back to the front end via AJAX
 
-// retrieve the form data by using the element's name attributes value as key 
 $site = $_POST["siteURL"];
 
 $ch = curl_init("$site");
@@ -19,7 +18,6 @@ if(curl_errno($ch)) {
 	echo "Oops! Something went wrong!" . curl_error($ch); // check for execution errors
 }
 
-// close the connection, release resources used
 curl_close($ch);
 
 echo $response;

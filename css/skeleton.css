@@ -28,14 +28,29 @@
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+  body {
+ 
+  background-color: ;
+  color: ;
+}
+
+#container {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 20px; /* height of your footer */
+}
+
 .main-section {
-  color: black;
+  color: ;
   text-align:center;
   position: relative;
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding-top: 200px;
+  padding-top: 150px;
   box-sizing: border-box;
 }
 
@@ -58,16 +73,27 @@
   float: left;
   box-sizing: border-box; }
 
-.footer {
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 60px;   /* Height of the footer */
+  background: ;
+}
+
+
+/* old footer
    text-align: center;
    margin: auto;
-   position: fixed;
+   position: relative;
    left: 0;
    bottom: 0;
    width: 100%;
    color: white;
    text-align: center;
   }
+*/
 
 .hidden_row td{
    display:none;

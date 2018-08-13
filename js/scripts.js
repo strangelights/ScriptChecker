@@ -12,8 +12,8 @@
         var $head = $doc.head.innerHTML;
         var $mcjs = $head.match(/mcjs/);
         var test = $mcjs.index;
-        console.log($mcjs);
-        console.log(test);
+        // console.log($mcjs);
+        // console.log(test);
           var $head = $doc.head.innerHTML;
           var $mcjs = $head.match(/mcjs/);
       } else{
@@ -74,8 +74,27 @@
 
      //-----------E-commerce Platform-----------
 
-     /* function findPlatform(){
+      function findPlatform(){
         var $body = $doc.body.innerHTML;
+        var platform = "Shopify";
+        function eachPlatform(){
+            var $findPlatform = $body.match(platform, "i"); // Find Shopify
+            console.log($findPlatform);
+            if ($findPlatform == platform) {
+              var $platformFound = document.getElementById("myTable").rows[5].cells;                      
+              $platformFound[1].innerHTML = '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=' + platform + '" ' + 'target="_blank">' + '<b>' + platform + '</b></a>';
+            }else if ($findPlatform == null) {
+              var $platformNotFound = document.getElementById("myTable").rows[5].cells;
+              $platformNotFound[1].innerHTML = '<a href="https://mailchimp.com/help/about-connected-sites/#connect+your+custom+website" target="_blank">Custom/Other</a>';
+            }
+        }
+        eachPlatform();
+        //platform = "Magento";
+        //eachPlatform();
+      
+      }  // turn this into for loop and new function for fidinding platform instead of finding each platform separately
+
+        /*
         if () {
 
         }else if () {
@@ -87,9 +106,10 @@
         }else {
 
         }
-     }
+     
 
      */
+
 
       //-----------Google Analytics-----------
 
@@ -100,7 +120,7 @@
           var $analyticsFound = document.getElementById("myTable").rows[6].cells;
           $analyticsFound[1].innerHTML = '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics" target="_blank"><b>YES</b></a>';
 
-        } else if ($findUA == null){
+        }else if ($findUA == null){
           var $analyticsNotFound = document.getElementById("myTable").rows[6].cells;
           $analyticsNotFound[1].innerHTML = '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics" target="_blank">Not Found</a>';
 
