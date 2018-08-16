@@ -8,5 +8,5 @@ v1.0 - Release Coming Soon!
 ##### ACKNOWLEDGEMENTS:
 
 * Roman Rheingans-Carrion for help with AJAX & Git and moral support.
-* Brian Ferraro for sharing your repo for BiffCheck to serve a guide, knowingly or unknowingly.
+* Brian Ferraro for sharing your repo for BiffCheck to serve as a guide, knowingly or unknowingly.
 * Stuart Schrick for web scraping ideas, code walkthroughs and positive affirmations.
