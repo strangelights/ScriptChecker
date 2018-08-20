@@ -398,12 +398,14 @@ td {
 th:first-child,
 td:first-child {
   padding-right: 50px;
-  text-align: right; }
+  text-align: right;
+  background-color: teal; }
 th:last-child,
 td:last-child {
   padding-left: 0px; 
   text-align: center;
-  color: #16a085; }
+  color: #16a085;
+  background-color: lightblue; }
 
 
 /* Spacing
