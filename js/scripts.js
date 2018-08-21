@@ -6,12 +6,11 @@ function findUID() {
 	var mcjsElement = $doc.getElementById("mcjs"); // checks for standard Connected Sites script (not Shopify version)
 	if (mcjsElement == null) {
 		var head = $doc.head.innerHTML;
-		var mcjs = head.match(/mcjs/);
-		var test = mcjs.index;
-		// console.log(mcjs);
-		// console.log(test);
-		var head = $doc.head.innerHTML;
-		var mcjs = head.match(/mcjs/);
+		var regex = "chimpstatic.com";  //https:\\/\\/chimpstatic.com\\/mcjs-connected\\/js\\/users\\/
+		console.log("String being searched for: " + regex);
+		var mcjs = head.match(regex);
+		console.log(mcjs);
+	
 	} else {
 		var mcjsTextContent = mcjsElement.textContent;
 		var mcjsSplit = mcjsTextContent.split("/");
@@ -87,7 +86,7 @@ function findPlatform() {
 	var platform = "Shopify";
 	function eachPlatform() {
 		var findPlatform = body.match(platform, "i"); // Find Shopify
-		console.log(findPlatform);
+		//console.log(findPlatform);
 		if (findPlatform == platform) {
 			var platformFound = document.getElementById("myTable").rows[5].cells;
 			platformFound[1].innerHTML =
