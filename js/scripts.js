@@ -6,6 +6,8 @@ function findUID() {
 	var mcjsElement = $doc.getElementById("mcjs"); // checks for standard Connected Sites script (not Shopify version)
 	if (mcjsElement == null) {
 		var head = $doc.head.innerHTML;
+		var headScripts = head.scripts
+		console.log(headScripts); // close but no cigar998
 		var regex = "chimpstatic.com";  //https:\\/\\/chimpstatic.com\\/mcjs-connected\\/js\\/users\\/
 		console.log("String being searched for: " + regex);
 		var mcjs = head.match(regex);
