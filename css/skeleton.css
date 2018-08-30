@@ -27,13 +27,8 @@
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-body {
-  background-color: ;
-  color: ;
-}
-
 #container {
-  min-height: 100vh; /* will cover the 100% of viewport */
+  min-height: 96vh; /* will cover the 100% of viewport */
   overflow: hidden;
   display: block;
   position: relative;
@@ -49,6 +44,7 @@ body {
   margin: 0 auto;
   padding-top: 150px;
   box-sizing: border-box;
+  /* background-color: teal; debugging */
 }
 
 .form-section {
@@ -77,6 +73,7 @@ body {
   text-align: center;
   height: 60px; /* Height of the footer */
   background: ;
+  color: red;
 }
 
 /* old footer
@@ -98,6 +95,24 @@ body {
 .table {
   margin: auto;
 }
+
+.loader {
+  margin: auto;
+  border: 0px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #52BAD5; /* Blue */
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
 
 /* For devices larger than 400px */
 @media (min-width: 400px) {
@@ -246,7 +261,7 @@ body {
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
-  color: #222;
+  color: #373737;
 }
 
 /* Typography
@@ -265,6 +280,7 @@ h1 {
   font-size: 4rem;
   line-height: 1.2;
   letter-spacing: -0.1rem;
+  
 }
 h2 {
   font-size: 3.6rem;
@@ -287,10 +303,13 @@ h5 {
   letter-spacing: -0.05rem;
 }
 h6 {
+  color: #5D5C5D;
   font-size: 1.5rem;
   line-height: 1.6;
   letter-spacing: 0;
-  color: grey;
+  max-width: 960px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 /* Larger than phablet */
@@ -312,7 +331,6 @@ h6 {
   }
   h6 {
     font-size: 1.5rem;
-    color: grey;
   }
 }
 
@@ -323,11 +341,11 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #16a085;
+  color: #52BAD5;
   text-decoration: none;
 }
 a:hover {
-  color: #1eaedb;
+  color: #239AB9;
   text-decoration: none;
 }
 
@@ -376,8 +394,8 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #fff;
-  background-color: #33c3f0;
-  border-color: #33c3f0;
+  background-color: #52BAD5;
+  border-color: #52BAD5;
 }
 .button.button-primary:hover,
 button.button-primary:hover,
@@ -390,8 +408,8 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #fff;
-  background-color: #1eaedb;
-  border-color: #1eaedb;
+  background-color: #239AB9;
+  border-color: #239AB9;
 }
 
 /* Forms
@@ -440,7 +458,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33c3f0;
+  border: 1px solid #239AB9;
   outline: 0;
 }
 label,
@@ -521,7 +539,7 @@ td:last-child {
   padding-left: 0px;
   text-align: center;
   color: #16a085;
-  /* background-color: lightblue; fur debugging */
+  /* background-color: lightblue; for debugging */
 }
 
 /* Spacing
