@@ -82,6 +82,7 @@
         <script src="js/scripts.js"></script>
 
         <script>
+          /*
           $(function showTable() {
             var shown = false;
             $('.button-primary').click(function (ev) {
@@ -90,7 +91,7 @@
               }
             });
           })
-
+          */
         </script>
 
 
@@ -104,7 +105,6 @@
           // add integration detection - maybe change to platform detection?
           // add google analytics to index page - will need URL first
 
-
           $("#siteForm").on("submit", function (e) {  // on form submission call the function
             e.preventDefault();                 // prevent the html form's submit action from occurring (see p.395 of Duckett)
             $formURL = $("#siteForm").serialize();
@@ -112,6 +112,9 @@
               url: 'php/proxy.php',
               type: 'POST',
               data: $formURL,
+              beforeSend: function() {   // controls ajax loader 
+                $("#loader").show();
+              },
               success: function (data) {
                 $curlResponse = data;           // pass server data back into variable
                 $parser = new DOMParser();
@@ -123,6 +126,9 @@
                 findEmbedded();
                 findAnalytics();
                 findPlatform();
+                $("#loader").hide();
+                $('.hidden_row td').slideDown();
+                
               },
               error: function () {
                 alert("There was an error. Please try again."); // In case of server error
@@ -131,9 +137,7 @@
           });
         </script>
 
-        <div class="loader"></div>
-
-
+        <div id="loader"></div>
 
         <!-- Table
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
