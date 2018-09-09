@@ -1,0 +1,14 @@
+{
+    "name": "josh/script-checker",
+    "description": "A utility that exposes MailChimp-specific technologies used on websites.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josh Brookshire",
+            "email": "jbrookshire@rsglab.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

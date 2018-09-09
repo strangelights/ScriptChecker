@@ -1,0 +1,52 @@
+
+  .content {
+    width: 500px;
+    font-size: 18px;
+    line-height: 20px;
+    height: 20px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .visible {
+    overflow: hidden;
+    height: 20px;
+  }
+  p {
+    display: inline;
+    float: left;
+  }
+  ul {
+    margin-top: 0;
+    text-align: left;
+    list-style: none;
+    animation: 8s ease 0s normal forwards infinite change;
+  }
+  ul li {
+    line-height: 40px;
+    margin: 0;
+  }
+
+  @keyframes change {
+    0% {
+      margin-top: 0;
+    }
+    23% {
+      margin-top: -20px;
+    }
+    33% {
+      margin-top: -40px;
+    }
+    56% {
+      margin-top: -60px;
+    }
+    66% {
+      margin-top: -80px;
+    }
+    90% {
+      margin-top: -100px;
+    }
+    100% {
+      margin-top: -120px;
+    }
+  }
+  
