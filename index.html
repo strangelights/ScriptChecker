@@ -56,12 +56,9 @@
           </form>
         </div>
 
-        <article>Heroku branch management testing</article>
-
-
         <script src="js/scripts.js"></script>
 
-    
+
         <!-- AJAX CALL AND RETURN
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
@@ -77,7 +74,7 @@
               url: 'php/proxy.php',
               type: 'POST',
               data: $formURL,
-              beforeSend: function() {   // controls ajax loader 
+              beforeSend: function () {   // controls ajax loader 
                 $("#loader").show();
               },
               success: function (data) {
@@ -93,7 +90,7 @@
                 findPlatform();
                 $("#loader").hide();
                 $('.hidden_row td').slideDown();
-                
+
               },
               error: function () {
                 alert("There was an error. Please try again."); // In case of server error
