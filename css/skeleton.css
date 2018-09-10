@@ -16,7 +16,7 @@
 - Buttons
 - Forms
 - Lists
-- Code
+- Code`
 - Tables
 - Spacing
 - Utilities
@@ -39,11 +39,11 @@
   display: none;
   margin: auto;
   border: 0px solid #f3f3f3; 
-  border-top: 5px solid #52BAD5; 
+  border-top: 2px solid #52BAD5; 
   border-radius: 50%;
-  width: 75px;
-  height: 75px;
-  animation: spin 2s linear infinite;
+  width: 30px;
+  height: 30px;
+  animation: spin .66s linear infinite;
 }
 
 @keyframes spin {
@@ -116,7 +116,9 @@
 
 .hidden_row td {
   display: none;
+ 
 }
+
 
 .table {
   margin: auto;
@@ -357,7 +359,9 @@ a {
 a:hover {
   color: #239AB9;
   text-decoration: none;
+  font-size: 1.55rem; 
 }
+
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -534,21 +538,40 @@ pre > code {
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-th,
-td {
-  padding: 12px 5px;
+table {
+  table-layout: fixed;
+  width: 60%; 
 }
-th:first-child,
+/*
+tbody tr:nth-child(odd) {
+  background-color: #f7f7f7;
+  
+}
+*/
+tr:hover {
+   background-color: #fcfcfc; 
+   /* font-size: 1.55rem */
+  
+}
+td {
+  padding: 10px;
+  
+}
+th:first-child{
+
+}
 td:first-child {
-  padding-right: 50px;
-  text-align: right;
+  padding-right: 0px;
+  text-align: center;
   /* background-color: teal;  for debugging */
 }
-th:last-child,
+th:last-child{
+
+}
 td:last-child {
   padding-left: 0px;
   text-align: center;
-  color: #16a085;
+  color: #52BAD5;  
   /* background-color: lightblue; for debugging */
 }
 
@@ -579,7 +602,7 @@ form {
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .u-full-width {
-  width: 100%;
+  width: 50%;
   box-sizing: border-box;
 }
 .u-max-full-width {
