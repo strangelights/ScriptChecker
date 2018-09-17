@@ -13,7 +13,7 @@ function findUID() {
     var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
     uid[1].innerHTML =
     '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
-        mcjsUID +
+        mcjsClean +
         '" ' +
         'target="_blank">' +
         "<b>" +
@@ -24,7 +24,7 @@ function findUID() {
     var mcjsTextContent = mcjsElement.textContent;
     var mcjsSplit = mcjsTextContent.split("/");
     var mcjsUID = mcjsSplit[6];
-    var length = mcjsUID.length;
+    var length = mcjsUID.length;g
     if (length == 25) {
       var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
       uid[1].innerHTML =
