@@ -6,21 +6,27 @@ function findUID() {
   var mcjsElement = $doc.getElementById("mcjs"); // checks for standard Connected Sites script (not Shopify version)
   if (mcjsElement == null) {
     var head = $doc.head.innerHTML;
-    var headScripts = head.scripts;
-    console.log(headScripts); // close but no cigar998
-    var regex = "chimpstatic.com"; //https:\\/\\/chimpstatic.com\\/mcjs-connected\\/js\\/users\\/
-    console.log("String being searched for: " + regex);
-    var mcjs = head.match(regex);
-    console.log(mcjs);
-    var uid = document.getElementById("myTable").rows[1].cells;
-    uid[1].innerHTML = "Not Found";
+    var regex = /\/(\w{25})(?:\\|\/)/g; // matches 25 character string beginning with a forward slash and ending with either a forward slash or backslash
+    var mcjsDirty = head.match(regex);
+    var mcjsClean = mcjsDirty[0].replace(/\/|\\/g, ''); // cleans up the string to remove the forward and/or backslashes; this method helps prevent false positives for other 25 digit srings
+    console.log("Hashed UUID: " + mcjsClean);
+    var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
+    uid[1].innerHTML =
+    '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
+        mcjsUID +
+        '" ' +
+        'target="_blank">' +
+        "<b>" +
+        mcjsClean +
+        "</b>" +
+        "</a>";
   } else {
     var mcjsTextContent = mcjsElement.textContent;
     var mcjsSplit = mcjsTextContent.split("/");
     var mcjsUID = mcjsSplit[6];
     var length = mcjsUID.length;
     if (length == 25) {
-      var uid = document.getElementById("myTable").rows[1].cells;
+      var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
       uid[1].innerHTML =
         '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
         mcjsUID +
