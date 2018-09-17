@@ -1,11 +1,5 @@
 var formURL, curlResponse, tempDiv, checkMCJS;
 
-/*-----Experimental REGEX----------
-
-/\/(\w{25})
-
-*/
-
 //-----------Returning UID------------
 
 function findUID() {
