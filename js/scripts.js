@@ -4,6 +4,8 @@ var formURL, curlResponse, tempDiv, checkMCJS;
 
 function findUID() {
   var mcjsElement = $doc.getElementById("mcjs"); // checks for standard Connected Sites script (not Shopify version)
+  console.log(mcjsElement);
+  console.log(mcjsDirty);
   if (mcjsElement == null) {
     var head = $doc.head.innerHTML;
     var regex = /\/(\w{25})(?:\\|\/)/g; // matches 25 character hexadecimal string beginning with a forward slash and ending with either a forward slash or backslash
@@ -21,7 +23,10 @@ function findUID() {
         mcjsClean +
         "</b>" +
         "</a>";
-    } 
+    } else {
+      var uid = document.getElementById("myTable").rows[1].cells;
+      uid[1].innerHTML = "Not Found";
+    }
   } else if (mcjsElement != null) {
     var mcjsTextContent = mcjsElement.textContent;
     var mcjsSplit = mcjsTextContent.split("/");
@@ -39,9 +44,6 @@ function findUID() {
         "</b>" +
         "</a>";
     }
-  } else {
-    var uid = document.getElementById("myTable").rows[1].cells;
-    uid[1].innerHTML = "Not Found";
   }
 }
 
