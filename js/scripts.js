@@ -6,13 +6,14 @@ function findUID() {
   var mcjsElement = $doc.getElementById("mcjs"); // checks for standard Connected Sites script (not Shopify version)
   if (mcjsElement == null) {
     var head = $doc.head.innerHTML;
-    var regex = /\/(\w{25})(?:\\|\/)/g; // matches 25 character string beginning with a forward slash and ending with either a forward slash or backslash
+    var regex = /\/(\w{25})(?:\\|\/)/g; // matches 25 character hexadecimal string beginning with a forward slash and ending with either a forward slash or backslash
     var mcjsDirty = head.match(regex);
-    var mcjsClean = mcjsDirty[0].replace(/\/|\\/g, ''); // cleans up the string to remove the forward and/or backslashes; this method helps prevent false positives for other 25 digit srings
-    console.log("Hashed UUID: " + mcjsClean);
-    var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
-    uid[1].innerHTML =
-    '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
+    if (mcjsDirty != null) {
+      var mcjsClean = mcjsDirty[0].replace(/\/|\\/g, ""); // cleans up the string to remove the forward and/or backslashes; this method helps prevent false positives for other 25 digit hexadecimal srings
+      console.log("Hashed UUID: " + mcjsClean);
+      var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
+      uid[1].innerHTML =
+        '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
         mcjsClean +
         '" ' +
         'target="_blank">' +
@@ -20,11 +21,12 @@ function findUID() {
         mcjsClean +
         "</b>" +
         "</a>";
-  } else {
+    } 
+  } else if (mcjsElement != null) {
     var mcjsTextContent = mcjsElement.textContent;
     var mcjsSplit = mcjsTextContent.split("/");
     var mcjsUID = mcjsSplit[6];
-    var length = mcjsUID.length;g
+    var length = mcjsUID.length;
     if (length == 25) {
       var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
       uid[1].innerHTML =
@@ -37,6 +39,9 @@ function findUID() {
         "</b>" +
         "</a>";
     }
+  } else {
+    var uid = document.getElementById("myTable").rows[1].cells;
+    uid[1].innerHTML = "Not Found";
   }
 }
 
@@ -92,46 +97,27 @@ function findEmbedded() {
 
 function findPlatform() {
   var body = $doc.body.innerHTML;
-  var platform = "Shopify";
-  function eachPlatform() {
-    var findPlatform = body.match(platform, "i"); // Find Shopify
-    //console.log(findPlatform);
-    if (findPlatform == platform) {
-      var platformFound = document.getElementById("myTable").rows[5].cells;
-      platformFound[1].innerHTML =
-        '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=' +
-        platform +
-        '" ' +
-        'target="_blank">' +
-        "<b>" +
-        platform +
-        "</b></a>";
-    } else if (findPlatform == null) {
-      var platformNotFound = document.getElementById("myTable").rows[5].cells;
-      platformNotFound[1].innerHTML =
-        '<a href="https://mailchimp.com/help/about-connected-sites/#connect+your+custom+website" target="_blank">Custom/Other</a>';
-    }
+  var platform = /shopify|bigcommerce|woocommerce|magento|prestashop|miva|squarespace|bigcartel|volusion|lemonstand|drupal/gi; //add new platforms here
+  var findPlatform = body.match(platform);
+  if (findPlatform == null) {
+    var platformNotFound = document.getElementById("myTable").rows[5].cells;
+    platformNotFound[1].innerHTML =
+      '<a href="https://mailchimp.com/help/about-connected-sites/#connect+your+custom+website" target="_blank">Custom/Other</a>';
+  } else {
+    console.log(findPlatform[0]);
+    var platformName = findPlatform[0];
+    var platformNameUppercase = platformName.toUpperCase();
+    var platformFound = document.getElementById("myTable").rows[5].cells;
+    platformFound[1].innerHTML =
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=' +
+      platformName +
+      '" ' +
+      'target="_blank">' +
+      "<b>" +
+      platformNameUppercase +
+      "</b></a>";
   }
-  eachPlatform();
-  //platform = "Magento";
-  //eachPlatform();
-} // turn this into for loop and new function for fidinding platform instead of finding each platform separately
-
-/*
-        if () {
-
-        }else if () {
-
-        }else if () {
-
-        }else if () {
-
-        }else {
-
-        }
-     
-
-     */
+}
 
 //-----------Google Analytics-----------
 
