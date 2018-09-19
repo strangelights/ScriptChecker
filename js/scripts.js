@@ -1,6 +1,6 @@
 var formURL, curlResponse, tempDiv, checkMCJS;
 
-//-----------Returning UID------------
+//-----------Returning UID--------------
 
 function findUID() {
   var mcjsElement = $doc.getElementById("mcjs"); // checks for standard Connected Sites script (not Shopify version)
@@ -89,7 +89,7 @@ function findEmbedded() {
 }
 
 //-----------E-commerce Platform-----------
-
+ 
 function findPlatform() {
   var body = $doc.body.innerHTML;
   var platform = "Shopify";
