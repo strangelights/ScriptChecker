@@ -16,11 +16,6 @@ function findUID() {
       var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
       uid[1].innerHTML =
         '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
-    var mcjsClean = mcjsDirty[0].replace(/\/|\\/g, ''); // cleans up the string to remove the forward and/or backslashes; this method helps prevent false positives for other 25 digit srings
-    console.log("Hashed UUID: " + mcjsClean);
-    var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
-    uid[1].innerHTML =
-    '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
         mcjsClean +
         '" ' +
         'target="_blank">' +
@@ -101,7 +96,7 @@ function findEmbedded() {
 }
 
 //-----------E-commerce Platform------------
- 
+
 function findPlatform() {
   var body = $doc.body.innerHTML;
   var platform = /shopify|bigcommerce|woocommerce|magento|prestashop|miva|squarespace|bigcartel|volusion|lemonstand|drupal/gi; //add new platforms here
