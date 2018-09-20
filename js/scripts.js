@@ -89,7 +89,7 @@ function findEmbedded() {
 }
 
 //-----------E-commerce Platform-----------
-
+ 
 function findPlatform() {
   var body = $doc.body.innerHTML;
   var platform = "Shopify";

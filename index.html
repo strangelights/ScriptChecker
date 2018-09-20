@@ -41,8 +41,8 @@
       <div class="main-section">
         <h1 class="main-heading">ScriptChecker</h1>
         <h5>A utility that exposes MailChimp-specific technologies used on websites.</h5>
-        <h6>Detect Connected Sites "mcjs" code, popup forms, embedded forms, account identification, e-commerce platforms, and
-          Google Analytics.</h6>
+        <h6>Detect Connected Sites "mcjs" code, popup forms, embedded forms, account identification, e-commerce platforms,
+          and Google Analytics.</h6>
         <br>
 
         <!-- Form
@@ -63,6 +63,9 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
         <script>
+
+          // add integration detection - maybe change to platform detection?
+          // add google analytics to index page - will need URL first
 
           $("#siteForm").on("submit", function (e) {  // on form submission call the function
             e.preventDefault();                 // prevent the html form's submit action from occurring (see p.395 of Duckett)
@@ -94,7 +97,6 @@
               }
             });
           });
-
         </script>
 
         <div id="loader"></div>
@@ -142,11 +144,9 @@
     </main>
     <footer>
       <div id="footer">
-        <a href="https://github.com/strangelights/ScriptChecker">
-          <img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="GitHub Logo" title="Git in the car nerd!" style="height:25px;">
-          <p>
-            <a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a>
-          </p>
+        <a href="https://github.com/strangelights/ScriptChecker"><img src="https://image.flaticon.com/icons/svg/25/25231.svg"
+            alt="GitHub Logo" title="Git in the car nerd!" style="height:25px;">
+          <p><a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a></p>
       </div>
     </footer>
   </div>
