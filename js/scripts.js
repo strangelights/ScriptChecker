@@ -47,7 +47,7 @@ function findUID() {
   }
 }
 
-//-----------Connect Sites Script-----------
+//-----------Connected Sites Script-----------
 
 function findMCJS() {
   var head = $doc.head.innerHTML;
