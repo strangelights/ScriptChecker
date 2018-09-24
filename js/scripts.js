@@ -136,3 +136,6 @@ function findAnalytics() {
       '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics" target="_blank">Not Found</a>';
   }
 }
+
+//-----------Facebook Pixel-----------
+// coming soon
