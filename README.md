@@ -9,12 +9,19 @@
 * Google Analytics
 * and more...
 
+Internally available via:
+https://asta.rsglab.com/scriptchecker
+
+Alternately accessible via:
 https://scriptchecker.herokuapp.com/
 
-##### CHANGELOG: 
+##### Changelog: 
 v1.0 - Release is live!
 
-##### ACKNOWLEDGEMENTS:
+##### Author
+* Josh Brookshire
+
+##### Acknowledgements:
 
 * Roman Rheingans-Carrion for help with AJAX & Git and moral support.
 * Brian Ferraro for sharing your repo for BiffCheck to serve as a guide, knowingly or unknowingly.
