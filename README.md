@@ -10,7 +10,7 @@
 * and more...
 
 Internally available via:
-https://asta.rsglab.com/scriptchecker
+https://asta.rsglab.com/projects/ScriptChecker/
 
 Alternately accessible via:
 https://scriptchecker.herokuapp.com/
