@@ -1,6 +1,6 @@
 # ScriptChecker
 ### [ScriptChecker](https://scriptchecker.herokuapp.com/) is a utility that exposes any MailChimp-specific technologies used on websites. 
-##### It detects: 
+#### It detects: 
 * Connected Sites "mcjs" code
 * popup forms
 * embedded forms
@@ -9,12 +9,19 @@
 * Google Analytics
 * and more...
 
+Internally available via:
+https://asta.rsglab.com/scriptchecker
+
+Alternately accessible via:
 https://scriptchecker.herokuapp.com/
 
-##### CHANGELOG: 
+#### Changelog: 
 v1.0 - Release is live!
 
-##### ACKNOWLEDGEMENTS:
+#### Author
+* Josh Brookshire
+
+#### Acknowledgements:
 
 * Roman Rheingans-Carrion for help with AJAX & Git and moral support.
 * Brian Ferraro for sharing your repo for BiffCheck to serve as a guide, knowingly or unknowingly.
