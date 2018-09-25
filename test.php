@@ -1,4 +1,4 @@
-<?php // Notice me, Apache?>
+<?php ?>
 <!DOCTYPE html>
 <html lang="en">
 
