@@ -7,7 +7,7 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>ScriptChecker - Get Scripty</title>
-  <meta name="description" content="ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites">
+  <meta name="description" content="ScriptChecker is a utility that exposes any Mailchimp-specific technologies used on websites">
   <meta name="author" content="Josh Brookshire">
 
   <!-- Mobile Specific Metas
@@ -51,7 +51,7 @@
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <div class="main-section">
         <h1 class="main-heading">ScriptChecker</h1>
-        <h5>A utility that exposes MailChimp-specific technologies used on websites.</h5>
+        <h5>A utility that exposes Mailchimp-specific technologies used on websites.</h5>
         <h6>Detect Connected Sites "mcjs" code, popup forms, embedded forms, account identification, e-commerce platforms, and
           Google Analytics.</h6>
         <br>
