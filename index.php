@@ -20,14 +20,20 @@
 
   <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css?q=y">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/skeleton.css?q=ac" title="default">
+  <link rel="alternate stylesheet" type="text/css" href="css/darkmode.css" title="darkmode">
+  <link rel="alternate stylesheet" type="text/css" href="css/cavendish.css" title="cavendish">
   <!--<link rel="stylesheet" href="css/rolodex.css?q=d">-->
 
 
   <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/script-favicon.png">
+
+<!-- CSS Styleswitcher and cookie set
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="/js/styleswitcher.js"></script>
 
   <!-- Load Jquery
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -47,8 +53,18 @@
 <body>
   <div id="container">
     <main>
-      <!-- Heading
+    <!-- Button TESTING
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div class="btn-group">
+        <button href="#" onclick="setActiveStyleSheet('cavendish'); return false;">Cavendish</button>
+        <button href="#" onclick="setActiveStyleSheet('default'); return false;">Light</button>
+        <button href="#" onclick="setActiveStyleSheet('darkmode'); return false;">Dark</button>
+      </div>
+
+
+
+
+      
       <div class="main-section">
         <h1 class="main-heading">ScriptChecker</h1>
         <h5>A utility that exposes Mailchimp-specific technologies used on websites.</h5>
@@ -105,8 +121,9 @@
               }
             });
           });
-          
+            
         </script>
+        
 
         <div id="loader"></div>
 

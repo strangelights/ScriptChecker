@@ -424,6 +424,31 @@ input[type="button"].button-primary:focus {
   border-color: #239ab9;
 }
 
+/* Button Group */
+.btn-group{
+  margin: auto;
+}
+.btn-group button {
+  float: left; /* Float the buttons side by side */
+}
+.btn-group button:not(:last-child) {
+ /* border-right: none;  Prevent double borders */
+}
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #888;
+}
+
+
+
+
+
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 input[type="email"],
