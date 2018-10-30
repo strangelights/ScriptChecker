@@ -61,6 +61,8 @@
         <button href="#" onclick="setActiveStyleSheet('darkmode'); return false;">Dark</button>
       </div>
 
+     <a href="/ms/minesweeper.html" onclick="">Sweep</a>
+
 
 
 
