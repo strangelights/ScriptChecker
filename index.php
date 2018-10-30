@@ -50,7 +50,8 @@
   </script>
 </head>
 
-<body>
+<body onload="searchParam()">
+
   <div id="container">
     <main>
     <!-- Button TESTING
@@ -94,7 +95,7 @@
         <script>
           
           $("#siteForm").on("submit", function (e) {  // on form submission call the function
-            e.preventDefault();                 // prevent the html form's submit action from occurring (see p.395 of Duckett)
+            e.preventDefault();                 // prevent the html form's submit action from occurring
             $formURL = $("#siteForm").serialize();
             $.ajax({
               url: 'php/proxy.php',
@@ -125,6 +126,18 @@
           });
             
         </script>
+
+  <!-- Allow form submission via url variable
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <script>
+          function searchParam() { 
+            let queryString = window.location.href.split('?'); // isolate string to the right of the '?'
+                queryString = queryString[1].split('='); // isolate string to the right of the '=' 
+                // The above could be reduced down to a single line but splitting at both the '?' and '=' helps confirm that proper key/value syntax is used for query.
+                document.getElementById('siteURL').value = queryString[1];
+          }
+        </script>
+
         
 
         <div id="loader"></div>
