@@ -132,10 +132,14 @@
         <script>
           function searchParam() { 
             let queryString = window.location.href.split('?'); // isolate string to the right of the '?'
-                queryString = queryString[1].split('='); // isolate string to the right of the '=' 
-                // The above could be reduced down to a single line but splitting at both the '?' and '=' helps confirm that proper key/value syntax is used for query.
-                document.getElementById('siteURL').value = queryString[1];
-          }
+            queryString = queryString[1].split('='); // isolate string to the right of the '=' 
+              // The above could be reduced down to a single line but splitting at both the '?' and '=' helps confirm that proper key/value syntax is used for query.
+            let decodedString = decodeURIComponent(queryString[1]); // Removes url encoding caused by Google Omnibox
+           // if (!/^https?:\/\//i.decodeString(url)) {
+           //   var url = 'http://' + url;  FIX THIS TO PREPEND HTTP IF NECESSARY
+             // }
+            document.getElementById('siteURL').value = decodedString;
+            }
         </script>
 
         
