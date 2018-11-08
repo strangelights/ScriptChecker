@@ -99,7 +99,7 @@ function findEmbedded() {
 
 function findPlatform() {
   var body = $doc.body.innerHTML;
-  var platform = /shopify|bigcommerce|woocommerce|magento|prestashop|miva|squarespace|bigcartel|volusion|lemonstand|drupal/gi; //add new platforms here
+  var platform = /shopify|bigcommerce|woocommerce|magento|prestashop|miva|squarespace|bigcartel|volusion|lemonstand|drupal|square/gi; //add new platforms here
   var findPlatform = body.match(platform);
   if (findPlatform == null) {
     var platformNotFound = document.getElementById("myTable").rows[5].cells;
