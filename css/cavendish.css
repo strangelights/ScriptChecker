@@ -55,16 +55,6 @@
     }
   }
   
-  #footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    height: 60px; /* Height of the footer */
-    background: ;
-    color: red;
-  }
-  
   .main-section {
     color: ;
     text-align: center;
@@ -95,29 +85,7 @@
     float: left;
     box-sizing: border-box;
   }
-  
-  #footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    height: 60px; /* Height of the footer */
-    background: ;
-    color: red;
-  }
-  
-  /* old footer
-     text-align: center;
-     margin: auto;
-     position: relative;
-     left: 0;
-     bottom: 0;
-     width: 100%;
-     color: white;
-     text-align: center;
-    }
-  */
-  
+ 
   .hidden_row td {
     display: none;
   }
@@ -540,7 +508,7 @@
     font-size: 90%;
   }
   li {
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
   }
   
   /* Code

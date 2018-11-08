@@ -21,11 +21,10 @@
   <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="css/skeleton.css?q=ac" title="default">
-  <link rel="alternate stylesheet" type="text/css" href="css/darkmode.css" title="darkmode">
-  <link rel="alternate stylesheet" type="text/css" href="css/cavendish.css" title="cavendish">
-  <!--<link rel="stylesheet" href="css/rolodex.css?q=d">-->
-
+  <link rel="stylesheet" type="text/css" href="css/skeleton.css?q=ad" title="default">
+  <link rel="alternate stylesheet" type="text/css" href="css/darkmode.css?q=1" title="darkmode">
+  <link rel="alternate stylesheet" type="text/css" href="css/cavendish.css?q=1" title="cavendish"> 
+ 
 
   <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -52,8 +51,90 @@
 
 <body onload="searchParam()">
 
+<!-- BEGIN NAVBAR EXPERIMENTAL
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<style>
+  ul.topnav {
+      list-style-type: none;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+      margin: -8px;
+     
+  }
+
+  ul.topnav li {
+      float: left;
+  }
+
+   ul.topnav li.right {
+      float: right;
+  }
+
+  ul.topnav li a, .dropbtn {
+      display: flex;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      
+  }
+
+  ul.topnav li a:hover, .dropdown:hover .dropbtn {
+      background-color: grey;
+  }
+
+  ul.topnav li.dropdown {
+      display: inline-block;
+  }
+
+  ul.topnav .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      
+  }
+
+  ul.topnav .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+  }
+
+  ul.topnav .dropdown-content a:hover {background-color: #f1f1f1}
+
+  ul.topnav .dropdown:hover .dropdown-content {
+      display: block;
+  }
+</style>
+
+  <ul class="topnav">
+    <li><a class="active" href="https://asta.rsglab.com/projects/ScriptChecker/">ScriptChecker</a></li>
+    <li><a href="https://asta.rsglab.com/projects/biff/check.php">DNSChecker</a></li>
+    <li><a href="https://asta.rsglab.com/projects/stuu/">EchoComm</a></li>
+    <li><a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/">S.T.A.R. Search</a></li>
+    <li><a href="https://us1.admin.mailchimp.com/peaches2/support/">MCAdmin</a></li>
+    <li class="dropdown right">
+      <a href="javascript:void(0)" class="dropbtn">Feedback</a>
+      <div class="dropdown-content">
+        <a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Feedback" target="_blank">Email</a>
+        <a href="https://github.com/strangelights/ScriptChecker/issues" target="_blank">GitHub</a>
+      </div>
+    </li>
+  </ul>
+
+<!-- End NAVBAR EXPERIMENTAL
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
   <div id="container">
     <main>
+    <br>
     <!-- Button TESTING
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <div class="btn-group">
@@ -187,15 +268,6 @@
         </div>
       </div>
     </main>
-    <footer>
-      <div id="footer">
-        <a href="https://github.com/strangelights/ScriptChecker">
-          <img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="GitHub Logo" title="Git in the car nerd!" style="height:25px;">
-          <p>
-            <a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a>
-          </p>
-      </div>
-    </footer>
   </div>
 </body>
 
