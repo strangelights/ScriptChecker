@@ -39,7 +39,7 @@
     display: none;
     margin: auto;
     border: 0px solid #f3f3f3;
-    border-top: 2px solid #52bad5;
+    border-top: 2px solid #eda600;
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -69,6 +69,10 @@
   
   .form-section {
     text-align: center;
+  }
+
+  .enterURL{
+    color: #808080;
   }
   
   .main-column {
@@ -284,7 +288,7 @@
     letter-spacing: -0.05rem;
   }
   h6 {
-    color: #5d5c5d;
+    color: #808080;
     font-size: 1.5rem;
     line-height: 1.6;
     letter-spacing: 0;
@@ -322,11 +326,11 @@
   /* Links
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
   a {
-    color: #52bad5;
+    color: #5ead7e;
     text-decoration: none;
   }
   a:hover {
-    color: #239ab9;
+    color: #65ce91;
     text-decoration: none;
     font-size: 1.55rem;
   }
@@ -430,11 +434,12 @@
   select {
     height: 38px;
     padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
-    background-color: #fff;
-    border: 1px solid #d1d1d1;
+    background-color: #212121;
+    border: 1px solid #5d5c5d;
     border-radius: 4px;
     box-shadow: none;
     box-sizing: border-box;
+    color: #0067e2;
   }
   /* Removes awkward default styles on some inputs for iOS */
   input[type="email"],
@@ -533,18 +538,14 @@
     table-layout: fixed;
     width: 60%;
   }
-  /*
-  tbody tr:nth-child(odd) {
-    background-color: #f7f7f7;
-    
-  }
-  */
+ 
   tr:hover {
-    background-color: #fcfcfc;
-    /* font-size: 1.55rem */
+    background-color: #333333;
   }
+
   td {
     padding: 10px;
+    color: #808080;
   }
   th:first-child {
   }
