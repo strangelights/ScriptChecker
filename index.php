@@ -20,7 +20,7 @@
 
   <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" type="text/css" href="css/navbar.css?q=1.1">
+  <link rel="stylesheet" type="text/css" href="css/navbar.css?q=1.2">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/skeleton.css?q=1.30" title="default">
   <link rel="alternate stylesheet" type="text/css" href="css/darkmode.css?q=1.1" title="darkmode">
@@ -58,12 +58,13 @@
 <body onload="searchParam()">
 
   
-<!-- Navbar
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<?php include 'php/navbar.php'?>  
+<!-- Navbar 
+  ––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <?php include 'php/navbar.php'?>  
 
   <script>
-    function myFunction() {
+      // Responsive goodness 
+      function burgerMenu() {
         var x = document.getElementById("topnav");
         if (x.className === "topnav") {
             x.className += " responsive";
@@ -71,21 +72,32 @@
             x.className = "topnav";
         }
     }
+    // Darkmode toggle
+    var checkbox = document.querySelector("input[name=onoffswitch]");
+    checkbox.addEventListener( 'change', themeToggle )
+    function themeToggle() {
+        if(this.checked) {
+          setActiveStyleSheet('darkmode');
+        } else {
+          setActiveStyleSheet('default');
+        }
+      }
+     // checks for darkmode cookie and toggles toggle switch on for consistent toggle state across a user's browser sessions 
+    if (document.cookie.split(';').filter(function(item) {return item.indexOf('style=darkmode') >= 0}).length) {
+      document.getElementById("onoffswitch").checked = true;
+    }
   </script>
 
   <div id="container">
     <main>
     <br>
-    <!-- Button TESTING
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-      <div class="btn-group">
-        <button href="#" onclick="setActiveStyleSheet('cavendish'); return false;">Cavendish</button>
-        <button href="#" onclick="setActiveStyleSheet('default'); return false;">Light</button>
-        <button href="#" onclick="setActiveStyleSheet('darkmode'); return false;">Dark</button>
-      </div>
 
+    <!-- TESTING
+        –––––––––––––––––––––––––––––––––––––––––––––––––– 
+    
      <a href="/ms/minesweeper.html" onclick="">Sweep</a>
-
+     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    
       
       <div class="main-section">
         <h1 class="main-heading">ScriptChecker</h1>
@@ -98,7 +110,7 @@
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="form-section">
           <form id="siteForm" action="" method="POST">
-            <span class="enterURL">Enter URL:&nbsp;</span>
+            <span id="enterURL">Enter URL:&nbsp;</span>
             <input id="siteURL" type="url" name="siteURL" placeholder="https://example.com" maxlength="128" required="required">
             <span>&nbsp;</span>
             <input class="button-primary" type="submit" name="submit" onclick="" value="Fetch!">

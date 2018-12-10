@@ -1,8 +1,10 @@
 <?php
+
+//
     echo
     '<nav>
         <ul class="topnav" id="topnav">
-            <li>
+            <li> 
                 <a href="https://asta.rsglab.com/projects/ScriptChecker/">ScriptChecker</a>
             </li>
             <li>
@@ -17,6 +19,9 @@
             <li>
                 <a href="https://us1.admin.mailchimp.com/peaches2/support/">MCAdmin</a>
             </li>
+            <li class="right">
+                <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="burgerMenu()">&#9776;</a>
+            </li>
             <li class="dropdown right">
                 <a class="dropbtn" href="javascript:void(0)">Feedback</a>
                 <div class="dropdown-content">
@@ -26,7 +31,8 @@
             </li>
             <li class="onoffswitch right">
                 <div>
-                <input class="onoffswitch-checkbox" id="myonoffswitch" name="onoffswitch" type="checkbox"> <label class="onoffswitch-label" for="myonoffswitch"></label>
+                    <input class="onoffswitch-checkbox" id="onoffswitch" name="onoffswitch" type="checkbox" onclick="themeToggle()">
+                    <label class="onoffswitch-label" for="onoffswitch"></label>
                 </div>
             </li>
         </ul>
