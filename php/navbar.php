@@ -26,7 +26,7 @@
                 <a class="dropbtn" href="javascript:void(0)">Feedback</a>
                 <div class="dropdown-content">
                     <a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Feedback" target="_blank">Email</a> 
-                    <a href="https://github.com/strangelights/ScriptChecker/issues" target="_blank">GitHub</a>
+                    <a href="https://git.rsglab.com/support-org/scriptchecker/issues" target="_blank">GitHub</a>
                 </div>
             </li>
             <li class="onoffswitch right">

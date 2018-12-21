@@ -25,11 +25,15 @@
   <link rel="stylesheet" type="text/css" href="css/skeleton.css?q=1.30" title="default">
   <link rel="alternate stylesheet" type="text/css" href="css/darkmode.css?q=1.1" title="darkmode">
   <link rel="alternate stylesheet" type="text/css" href="css/cavendish.css?q=1" title="cavendish">
-  
-  <!-- Navbar Icons
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--link rel="stylesheet" type="text/css" href="https://unpkg.com/tippy.js@3.3.0/dist/themes/light.css" id="default"-->
+  <link rel="alternate stylesheet" type="text/css" href="https://unpkg.com/tippy.js@3.3.0/dist/themes/google.css" id="darkmode">
  
+
+  
+
+  <!-- Navbar & info icons
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
   <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -78,8 +82,10 @@
     function themeToggle() {
         if(this.checked) {
           setActiveStyleSheet('darkmode');
+          //tippyThemeSetDark();
         } else {
           setActiveStyleSheet('default');
+          //tippyThemeSetLight();
         }
       }
      // checks for darkmode cookie and toggles toggle switch on for consistent toggle state across a user's browser sessions 
@@ -87,6 +93,27 @@
       document.getElementById("onoffswitch").checked = true;
     }
   </script>
+  <script>
+    /*
+    function tippyThemeSetDark(){
+      var light = document.getElementById("tippy-light");
+      light.disabled = true;
+      var dark = document.getElementById("tippy-dark");
+      dark.disabled = false;
+      //sheet.parentNode.removeChild(sheet); 
+    }
+
+    function tippyThemeSetLight(){
+      var lighter = document.getElementById("tippy-dark");
+      lighter.disabled = true;
+      var darker = document.getElementById("tippy-dark");
+      darker.disabled = false;
+      //sheet.parentNode.removeChild(sheet); 
+    }
+
+    */
+  </script>
+
 
   <div id="container">
     <main>
@@ -102,10 +129,8 @@
       <div class="main-section">
         <h1 class="main-heading">ScriptChecker</h1>
         <h5>A utility that exposes Mailchimp-specific technologies used on websites.</h5>
-        <h6>Detect Connected Sites "mcjs" code, popup forms, embedded forms, account identification, e-commerce platforms, and
-          Google Analytics.</h6>
         <br>
-
+        <br>
         <!-- Form
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="form-section">
@@ -116,8 +141,13 @@
             <input class="button-primary" type="submit" name="submit" onclick="" value="Fetch!">
           </form>
         </div>
-
+        
         <script src="js/scripts.js"></script>
+
+        <noscript>
+          <span style="color:red; font-size:50px;"> &#9888; </span>
+          <h5>Yeah, you're going to want to enable JavaScript if you want to use this utility.</h5>
+        </noscript>
 
         <!-- AJAX CALL AND RETURN
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -138,13 +168,14 @@
                 $curlResponse = data;           // pass server data back into variable
                 $parser = new DOMParser();
                 $doc = $parser.parseFromString($curlResponse, "text/html");
-                console.log($doc);
+                console.log("Full html of target site: ", $doc);
                 findUID();
                 findMCJS();
                 findPopup();
                 findEmbedded();
                 findAnalytics();
                 findPlatform();
+                $(".description").hide();
                 $("#loader").hide();
                 $('.hidden_row td').slideDown();
 
@@ -177,11 +208,22 @@
         </script>
 
 
-        <div id="loader"></div>
+        <script>
+          // When the user clicks on info icon, open the popup
+          function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+          }
+        </script>
+
+
+        
+        <h6 class="description">Detect Connected Sites "mcjs" code, popup forms, embedded forms, account identification, e-commerce platforms, and
+          Google Analytics.</h6>
 
         <!-- Table
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+      <div id="loader"></div>
         <div class="table-section">
           <table id="myTable" class="table">
             <thead>
@@ -192,27 +234,45 @@
             </thead>
             <tbody>
               <tr class="hidden_row">
-                <td>Hashed User ID</td>
+                <td>Hashed User ID 
+                  <span class="popup fas fa-info-circle" id="tooltip-hashed-user-id"></span>
+                </td>
                 <td headers="UID"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Connected Site</td>
+                <td>Connected Site 
+                  <span class="fas fa-info-circle" id="tooltip-connected-site"></span>
+                </td>
                 <td headers="MCJS"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Popup Form</td>
+                <td>Popup Form (Connected Sites) 
+                  <span class="fas fa-info-circle" id="tooltip-popup-form-connected-sites"></span>
+                </td>
                 <td headers="popup"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Embedded Form</td>
+                <td>Popup Form (Standalone) 
+                  <span class="fas fa-info-circle" id="tooltip-popup-form-standalone"></span>
+                </td>
+                <td headers="popup"></td>
+              </tr>
+              <tr class="hidden_row">
+                <td>Embedded Form 
+                  <span class="fas fa-info-circle" id="tooltip-embedded-form"></span>
+                </td>
                 <td headers="embedded"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Ecommerce Platform</td>
+                <td>Ecommerce Platform 
+                  <span class="fas fa-info-circle" id="tooltip-ecommerce-platform"></span>
+                </td>
                 <td headers="ecomm"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Google Analytics</td>
+                <td>Google Analytics 
+                  <span class="fas fa-info-circle" id="tooltip-google-analytics"></span>
+                </td>
                 <td headers="GA"></td>
               </tr>
             </tbody>
@@ -221,6 +281,53 @@
       </div>
     </main>
   </div>
-</body>
+    
+  <!-- Tooltip Library 
+    ––––––––––––––––––––––––––––––––––––––––––––––– -->
 
+  <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+  <script>  
+    tippy.setDefaults({
+      a11y: false,
+      allowHTML: true,
+      animation: "shift-toward",
+      arrow: true,
+      arrowType: 'sharp',
+      duration: 0,
+      distance: 20,
+      inertia: true,
+      interactive: true,
+      interactiveBorder: 0,
+      maxwidth: "700px",
+      offset: 50,
+      placement: "top-start",
+      size: "large",
+      theme: "light",
+      trigger: "click"  
+    })
+
+    tippy('#tooltip-hashed-user-id', { 
+      content: '<div class="tooltip">I\'m a Hashed User ID tooltip!</div>'
+    })
+    tippy('#tooltip-connected-site', { 
+      content: '<div class="tooltip">I\'m a Connected Site tooltip!</div>' 
+    })
+    tippy('#tooltip-popup-form-connected-sites', { 
+      content: '<div class="tooltip">&lt;script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">&lt;/script>&lt;script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"39d7e2d83318adc0ff95fc00a","lid":"bb654aac42","uniqueMethods":true}) })</script&gt;</div>'
+    })
+    tippy('#tooltip-popup-form-standalone', { 
+      content: '<div class="tooltip">I\'m another Popup Form tooltip!</div>' 
+    })
+    tippy('#tooltip-embedded-form', { 
+      content: '<div class="tooltip">I\'m a Embedded Form tooltip!' 
+    })
+    tippy('#tooltip-ecommerce-platform', { 
+      content: '<div class="tooltip">I\'m a Ecommerce Platform tooltip!' 
+    })
+    tippy('#tooltip-google-analytics', { 
+      content: '<div class="tooltip">I\'m a Google Analytics tooltip!</div>' 
+    })
+
+  </script>
+</body>
 </html>
