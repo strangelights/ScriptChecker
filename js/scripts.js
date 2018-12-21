@@ -67,18 +67,26 @@ function findMCJS() {
 //----------Popup Script (Standalone) ------------
 
 function findPopup() {
+  var head = $doc.head.innerHTML;
   var body = $doc.body.innerHTML;
-  var popupForm = body.match(/signup-forms\/popup\/embed.js/); // MC Pop Up Form code
-  if (popupForm == "signup-forms/popup/embed.js") {
+  var formPath = /signup-forms\/popup\/embed.js|signup-forms\/popup\/unique-methods\/embed.js/g 
+  // 'unique-methods' directory was added to file path in late 2018 but old forms may still reference the old path. Leaving both for good measure.
+  var popupFormHead = head.match(formPath); 
+  var popupFormBody = body.match(formPath);
+  if (popupFormHead !== null) {
     var popupFound = document.getElementById("myTable").rows[4].cells;
     popupFound[1].innerHTML =
-      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>YES</b></a>';
-  } else if (popupForm == null) {
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>YES: within the &lt;head&gt; html</b></a>';
+  } else if (popupFormBody !== null) {
+      var popupFound = document.getElementById("myTable").rows[4].cells;
+      popupFound[1].innerHTML =
+        '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>YES: within the &lt;body&gt; html</b></a>';
+  } else {
     var popupNotFound = document.getElementById("myTable").rows[4].cells;
     popupNotFound[1].innerHTML =
       '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank">Not Found</a>';
   }
-} // TO DO: CONFIRM IF POPUP FORM CAN BE IN HEAD AS WELL AND ADD IF STATEMENT FOR SCENARIO
+ } // TO DO: CONFIRM IF POPUP FORM CAN BE IN HEAD AS WELL AND ADD IF STATEMENT FOR SCENARIO
 
 //-----------Embedded Script-----------
 
