@@ -316,7 +316,7 @@
       content: '<div class="tooltip">&lt;script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false">&lt;/script>&lt;script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"39d7e2d83318adc0ff95fc00a","lid":"bb654aac42","uniqueMethods":true}) })</script&gt;</div>'
     })
     tippy('#tooltip-popup-form-standalone', { 
-      content: '<div class="tooltip">I\'m another Popup Form tooltip!</div>' 
+      content: '<div class="tooltip">Popup form code may be placed anywhere within the &lt;head&gt; or &lt;body&gt tags of the page and usually looks something like this: <br><br> &lt;script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"&gt;&lt;/script&gt;&lt;script type="text/javascript"&gt;window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us13.list-manage.com","uuid":"219ec3282ae742b42f62a07e8","lid":"314b2fff57","uniqueMethods":true}) })&lt;/script&gt; <br><br> When viewing the Page Source, try searching for the keywords \"mailchimp\" or \"embed\". <br><br> Note that the hashed User ID ("uuid") and List ID ("lid") are referenced within the script.</div>' 
     })
     tippy('#tooltip-embedded-form', { 
       content: '<div class="tooltip">I\'m a Embedded Form tooltip!' 

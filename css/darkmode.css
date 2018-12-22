@@ -55,6 +55,9 @@
     }
   }
 
+  /* Tooltips & Icons
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
   .tooltip{font-size: 2rem;
     line-height: 1.5;
     letter-spacing: -0.05rem;
@@ -73,7 +76,27 @@
     left: 0px;
     cursor: pointer;
   }
+
+  .success-icon{
+    font-size: 1.05em;
+    padding-left: 15px;
+    color: #00d843;
+    vertical-align: middle;
+  }
+
+  .question-icon{
+    font-size: 1.05em;
+    padding-left: 15px;
+    color: #eda600;
+    vertical-align: middle;
+  }
   
+  .failure-icon{
+    font-size: 1.05em;
+    padding-left: 15px;
+    color: #c93838;
+    vertical-align: middle;
+  }
 
   .main-section {
     color: ;

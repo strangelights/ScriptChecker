@@ -6,23 +6,39 @@ function findUID() {
   var mcjsElement = $doc.getElementById("mcjs"); // checks for standard Connected Sites script (not Shopify version)
   if (mcjsElement == null) {
     var head = $doc.head.innerHTML;
+    var body = $doc.body.innerHTML;
     var regex = /\/(\w{25})(?:\\|\/)/g; // matches 25 character hexadecimal string beginning with a forward slash and ending with either a forward slash or backslash
-    var mcjsDirty = head.match(regex);
-    if (mcjsDirty != null) {
-      var mcjsClean = mcjsDirty[0].replace(/\/|\\/g, ""); // cleans up the string to remove the forward and/or backslashes; this method helps prevent false positives for other 25 digit hexadecimal srings
+    var mcjsDirtyHead = head.match(regex);
+    var mcjsDirtyBody = body.match(regex);
+    console.log(mcjsDirtyHead);
+    console.log(mcjsDirtyBody);
+    if (mcjsDirtyHead != null) {
+      var mcjsClean = mcjsDirtyHead[0].replace(/\/|\\/g, ""); // cleans up the string to remove the forward and/or backslashes; this method helps prevent false positives for other 25 digit hexadecimal srings
       var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
       uid[1].innerHTML =
         '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
         mcjsClean +
         '" ' +
         'target="_blank">' +
-        "<b>" +
+        '<b>' +
         mcjsClean +
-        "</b>" +
-        "</a>";
+        '</b></a>' +
+        '<span class="success-icon">👍</span>';
+    } else if (mcjsDirtyBody != null) {
+      var mcjsClean = mcjsDirtyBody[0].replace(/\/|\\/g, ""); // cleans up the string to remove the forward and/or backslashes; this method helps prevent false positives for other 25 digit hexadecimal srings
+      var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID
+      uid[1].innerHTML =
+        '<a href="https://us1.admin.mailchimp.com/peaches2/tools/user-search/results?q=' +
+        mcjsClean +
+        '" ' +
+        'target="_blank">' +
+        '<b>' +
+        mcjsClean +
+        '</b></a>' +
+        '<span class="success-icon">👍</span>';
     } else {
       var uid = document.getElementById("myTable").rows[1].cells;
-      uid[1].innerHTML = "Not Found";
+      uid[1].innerHTML = 'Not Found <span class="failure-icon">👎</span>';
     }
   } else if (mcjsElement != null) {
     var mcjsTextContent = mcjsElement.textContent;
@@ -36,10 +52,10 @@ function findUID() {
         mcjsUID +
         '" ' +
         'target="_blank">' +
-        "<b>" +
+        '<b>' +
         mcjsUID +
-        "</b>" +
-        "</a>";
+        '</b></a>' +
+        '<span class="success-icon">👍</span>';
     }
   }
 }
@@ -48,15 +64,21 @@ function findUID() {
 
 function findMCJS() {
   var head = $doc.head.innerHTML;
-  var mcjs = head.match(/mcjs/);
-  if (mcjs == "mcjs") {
+  var body = $doc.body.innerHTML;
+  var mcjsHead = head.match(/mcjs/);
+  var mcjsBody = body.match(/mcjs/);
+  if (mcjsHead == "mcjs") {
     var mcjsFound = document.getElementById("myTable").rows[2].cells;
     mcjsFound[1].innerHTML =
-      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=connected+sites" target="_blank"><b>YES</b></a>';
-  } else if (mcjs == null) {
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=connected+sites" target="_blank"><b>Found in &lt;head&gt;</b></a><span class="success-icon">👍</span>';
+  } else if (mcjsBody == "mcjs") {
+    var mcjsFound = document.getElementById("myTable").rows[2].cells;
+    mcjsFound[1].innerHTML =
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=connected+sites" target="_blank"><b>Found in &lt;body&gt;</b></a><span class="success-icon">👍</span>';
+  } else {
     var mcjsNotFound = document.getElementById("myTable").rows[2].cells;
     mcjsNotFound[1].innerHTML =
-      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=connected+sites" target="_blank">Not Found</a>';
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=connected+sites" target="_blank">Not Found</a><span class="failure-icon">👎</span>';
   }
 }
 
@@ -69,24 +91,24 @@ function findMCJS() {
 function findPopup() {
   var head = $doc.head.innerHTML;
   var body = $doc.body.innerHTML;
-  var formPath = /signup-forms\/popup\/embed.js|signup-forms\/popup\/unique-methods\/embed.js/g 
+  var formPath = /signup-forms\/popup\/embed.js|signup-forms\/popup\/unique-methods\/embed.js/g
   // 'unique-methods' directory was added to file path in late 2018 but old forms may still reference the old path. Leaving both for good measure.
-  var popupFormHead = head.match(formPath); 
+  var popupFormHead = head.match(formPath);
   var popupFormBody = body.match(formPath);
   if (popupFormHead !== null) {
     var popupFound = document.getElementById("myTable").rows[4].cells;
     popupFound[1].innerHTML =
-      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>YES: within the &lt;head&gt; html</b></a>';
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>Found in &lt;head&gt;</b></a><span class="success-icon">👍</span>';
   } else if (popupFormBody !== null) {
-      var popupFound = document.getElementById("myTable").rows[4].cells;
-      popupFound[1].innerHTML =
-        '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>YES: within the &lt;body&gt; html</b></a>';
+    var popupFound = document.getElementById("myTable").rows[4].cells;
+    popupFound[1].innerHTML =
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>Found in &lt;body&gt;</b></a><span class="success-icon">👍</span>';
   } else {
     var popupNotFound = document.getElementById("myTable").rows[4].cells;
     popupNotFound[1].innerHTML =
-      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank">Not Found</a>';
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank">Not Found</a><span class="failure-icon">👎</span>';
   }
- } // TO DO: CONFIRM IF POPUP FORM CAN BE IN HEAD AS WELL AND ADD IF STATEMENT FOR SCENARIO
+} 
 
 //-----------Embedded Script-----------
 
@@ -96,11 +118,11 @@ function findEmbedded() {
   if (embeddedForm == "mc-embed") {
     var embeddedFound = document.getElementById("myTable").rows[5].cells;
     embeddedFound[1].innerHTML =
-      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=embedded+form" target="_blank"><b>YES</b></a>';
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=embedded+form" target="_blank"><b>YES</b></a><span class="success-icon">👍</span>';
   } else if (embeddedForm == null) {
     var embeddedNotFound = document.getElementById("myTable").rows[5].cells;
     embeddedNotFound[1].innerHTML =
-      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=embedded+form" target="_blank">Not Found</a>';
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=embedded+form" target="_blank">Not Found</a><span class="failure-icon">👎</span>';
   }
 }
 
@@ -113,7 +135,7 @@ function findPlatform() {
   if (findPlatform == null) {
     var platformNotFound = document.getElementById("myTable").rows[6].cells;
     platformNotFound[1].innerHTML =
-      '<a href="https://mailchimp.com/help/about-connected-sites/#connect+your+custom+website" target="_blank">Custom/Other</a>';
+      '<a href="https://mailchimp.com/help/about-connected-sites/#connect+your+custom+website" target="_blank">Custom/Other</a><span class="question-icon">🤙</span>';
   } else {
     var platformName = findPlatform[0];
     var platformNameUppercase = platformName.toUpperCase();
@@ -125,7 +147,8 @@ function findPlatform() {
       'target="_blank">' +
       '<b>' +
       platformNameUppercase +
-      '</b></a>';
+      '</b></a>' +
+      '<span class="success-icon">👍</span>';
   }
 }
 
@@ -137,32 +160,34 @@ function findAnalytics() {
   var idSearch = /ua-\d{4,9}-\d{1,4}/ig
   var findIDHead = head.match(idSearch);
   var findIDBody = body.match(idSearch);
-  if (findIDHead !== null){
+  if (findIDHead !== null) {
     var trackingID = findIDHead[0];
     var analyticsFound = document.getElementById("myTable").rows[7].cells;
     analyticsFound[1].innerHTML =
-    '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics' +
-    '" ' +
-    'target="_blank">' +
-    '<b>' +
-    trackingID +
-    '</b></a>';        
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics' +
+      '" ' +
+      'target="_blank">' +
+      '<b>' +
+      trackingID +
+      '</b></a>' +
+      '<span class="success-icon">👍</span>';
   } else if (findIDBody !== null) {
     var trackingID = findIDBody[0];
     var analyticsFound = document.getElementById("myTable").rows[7].cells;
     analyticsFound[1].innerHTML =
-    '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics' +
-    '" ' +
-    'target="_blank">' +
-    '<b>' +
-    trackingID +
-    '</b></a>';
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics' +
+      '" ' +
+      'target="_blank">' +
+      '<b>' +
+      trackingID +
+      '</b></a>' +
+      '<span class="success-icon">👍</span>';
   } else {
-      var analyticsNotFound = document.getElementById("myTable").rows[7].cells;
-      analyticsNotFound[1].innerHTML =
-      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics" target="_blank">Not Found</a>'; 
-    }   
+    var analyticsNotFound = document.getElementById("myTable").rows[7].cells;
+    analyticsNotFound[1].innerHTML =
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=Google+Analytics" target="_blank">Not Found</a><span class="failure-icon">👎</span>';
   }
+}
 
 //-----------Facebook Pixel-----------
 // coming soon
