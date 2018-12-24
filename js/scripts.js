@@ -10,8 +10,6 @@ function findUID() {
     var regex = /\/(\w{25})(?:\\|\/)/g; // matches 25 character hexadecimal string beginning with a forward slash and ending with either a forward slash or backslash
     var mcjsDirtyHead = head.match(regex);
     var mcjsDirtyBody = body.match(regex);
-    console.log(mcjsDirtyHead);
-    console.log(mcjsDirtyBody);
     if (mcjsDirtyHead != null) {
       var mcjsClean = mcjsDirtyHead[0].replace(/\/|\\/g, ""); // cleans up the string to remove the forward and/or backslashes; this method helps prevent false positives for other 25 digit hexadecimal srings
       var uid = document.getElementById("myTable").rows[1].cells; // display MCAdmin hyperlinked UUID

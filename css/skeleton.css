@@ -59,16 +59,58 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .tooltip{
-  font-size: 2rem;
-    line-height: 1.5;
-    letter-spacing: -0.05rem;
-    overflow-wrap: break-word;
-    font-family: monospace;
-    max-width: 750px;
+  font-size: 1.75rem;
+  line-height: 1.5;
+  letter-spacing: -0.05rem;
+  overflow-wrap: break-word;
+  max-width: 750px;
+  text-align: left;
+  color: white;
 }
 
 .tippy-tooltip{
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+  max-width: 500px;
+}
+
+.tooltip-tip{
+  margin: 9px;
+  line-height: 1.33;
+  font-size: 90%;
+}
+
+.tooltip-tip a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.tooltip-tip a:hover {
+  color: #808080;
+  text-decoration: underline;
+  font-size: 1.55rem;
+  letter-spacing: -0.03rem;
+
+}
+
+.tooltip-note{
+  color: #e6db74;
+}
+
+.tooltip-keyword{
+  color: #7c99db;
+}
+
+.tooltip-snippet{
+  font-family: "Courier 10 Pitch", Courier, monospace;
+  font-size: 85%;
+  text-align: left;
+  color: #808080;
+  margin: 9px;
+  border-top: 1px solid;
+  padding-top: 6px;
+  line-height: 135%;
+  overflow: scroll;
+  max-height: 270px;
+
 }
 
 .fa-info-circle{
@@ -76,6 +118,11 @@
   top: -6px;
   left: 0px;
   cursor: pointer;
+}
+
+.fa-lightbulb{
+  color: #e6db74;
+  padding-right: 9px;
 }
 
 .success-icon{
