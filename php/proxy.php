@@ -1,6 +1,6 @@
 <?php 
 
-// this page will serve up HTML scraped via cURL and pass it back to the front end via AJAX
+// this file  will serve up HTML scraped via cURL and pass it back to the front end via AJAX
 
 $site = $_POST["siteURL"];
 
@@ -14,7 +14,7 @@ curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_1
 
 $response = curl_exec($ch);
 
-if(curl_errno($ch)) {
+if (curl_errno($ch)) {
 	echo "Oops! Something went wrong!" . curl_error($ch); // check for execution errors
 }
 

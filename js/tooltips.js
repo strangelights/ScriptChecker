@@ -25,7 +25,7 @@
 	  
 	  '<div class="tooltip">' +
 
-	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>The hashed User ID can be found within the Connected Sites script as the first of two 25-digit hexdecimal strings that make up part of the chimpstatic.com.</div>' +
+	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>The hashed User ID can be found within the Connected Sites script as the first of two 25-digit hexdecimal strings that make up part of the chimpstatic.com url.</div>' +
 	
 	  '<div class="tooltip-snippet">&lt;script id=&quot;mcjs&quot;&gt;!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,&quot;script&quot;,&quot;https://chimpstatic.com/mcjs-connected/js/users/<span class="tooltip-note">219ec3282ae742b42f62a07e8</span>/f660b56ff295be3ad55969481.js&quot;);&lt;/script&gt;</div>' +
 	  '</div>' 
@@ -144,9 +144,9 @@
 
 	  '<div class="tooltip">' +
 
-	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>Google Analytics code can vary widely depending on how it\'s injected into the page. Though, the tracking ID should follow a 5-13 digit <span class="tooltip-keyword">UA-XXXXXX-XX</span> naming convention.</div>' + 
+	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>Google Analytics code can vary widely depending on how it\'s injected into the page. Though, the tracking ID should follow a 5-13 digit <span class="tooltip-keyword">UA-XXXXXX-XX</span> naming convention as shown in the example below.</div>' + 
 	
-	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>In addition to confirming a detected ID matches the ID within the Integrations page for an account, it\'s also possible to trace an ID using a <a href="http://moonsearch.com/analytics/" target="_blank">reverse lookup tool</a>.</div>' +
+	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>In addition to confirming a detected ID matches what is shown within the Integrations page for an account, it\'s also possible to trace an ID using a <a href="http://moonsearch.com/analytics/" target="_blank">reverse lookup tool</a>.</div>' +
 
 	  `<div class="tooltip-snippet">
 	  &lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-81785500-2&quot;&gt;&lt;/script&gt;
@@ -156,11 +156,10 @@
 		function gtag(){dataLayer.push(arguments);}
 		gtag(&apos;js&apos;, new Date());
 	
-		gtag(&apos;config&apos;, &apos;<span class="tooltip-keyword">UA-81785500-2</span>&apos;);
+		gtag(&apos;config&apos;, &apos;<span class="tooltip-note">UA-81785500-2</span>&apos;);
 	  &lt;/script&gt;
 	  </div>`	 +
 	  
 	  '</div>'
-	  
-	//   http://moonsearch.com/analytics/ - reverse lookup link this
+	
     })

@@ -160,6 +160,7 @@
             $.ajax({
               url: 'php/proxy.php',
               type: 'POST',
+              dataType: 'text',
               data: $formURL,
               beforeSend: function () {   // controls ajax loader 
                 $("#loader").show();
@@ -171,6 +172,7 @@
                 console.log("Full html of target site: ", $doc);
                 findUID();
                 findMCJS();
+                findCSPopup();
                 findPopup();
                 findEmbedded();
                 findAnalytics();
@@ -287,6 +289,6 @@
 
   <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
   <script src="/js/tooltips.js"></script>
-  
+
 </body>
 </html>

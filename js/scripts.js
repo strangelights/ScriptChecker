@@ -3,6 +3,7 @@ var formURL, curlResponse, tempDiv, checkMCJS;
 //-----------Returning UID--------------
 
 function findUID() {
+  console.log("Full html of target site: ", $doc);
   var mcjsElement = $doc.getElementById("mcjs"); // checks for standard Connected Sites script (not Shopify version)
   if (mcjsElement == null) {
     var head = $doc.head.innerHTML;
@@ -81,7 +82,53 @@ function findMCJS() {
 }
 
 //-----------Popup Script (Connected Sites)-----------
-// coming soon
+
+function findCSPopup(){
+  var head = $doc.head.innerHTML;
+  var body = $doc.body.innerHTML;
+  var grabChimpstatic = /(?:https:(?:\\|\/)(?:\\|\/)chimpstatic.com(?:\\|\/)mcjs-connected(?:\\|\/)js(?:\\|\/)users(?:\\|\/)(\w{25})(?:\\|\/)(\w{25}).js)|(https:(?:\\|\/)(?:\\|\/)(?:\\|\/)(?:\\|\/)chimpstatic.com(?:\\|\/)(?:\\|\/)mcjs-connected(?:\\|\/)(?:\\|\/)js(?:\\|\/)(?:\\|\/)users(?:\\|\/)(?:\\|\/)(\w{25})(?:\\|\/)(?:\\|\/)(\w{25}).js)/gi;
+  var csPopupFormHead = head.match(grabChimpstatic);
+  var csPopupFormBody = body.match(grabChimpstatic);
+  if (csPopupFormHead != null){
+    var chimpstaticURL = csPopupFormHead[0];
+  } else if (csPopupFormBody != null) {
+    var chimpstaticURL = csPopupFormBody[0];
+  } else {
+    var csPopupNotFound = document.getElementById("myTable").rows[3].cells;
+    csPopupNotFound[1].innerHTML =
+      '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank">Not Found</a><span class="failure-icon">👎</span>';
+  }
+
+  $.ajax({
+    url: 'php/find-chimpstatic.php',
+    type: 'POST',
+    dataType: 'text',
+    data:{url: chimpstaticURL},
+    success: function (data) {
+      $curlResponse = data;           // pass server data back into variable
+      $parser = new DOMParser();
+      $doc = $parser.parseFromString($curlResponse, "text/html");
+      console.log("Content of Chimpstatic file: ", $doc);
+      var chimpstaticRegex = /popup_form.installed = true/gi;
+      var csPopupFound = $doc.body.innerText.match(chimpstaticRegex);
+      if (csPopupFound == "popup_form.installed = true"){
+        var csPopupNotFound = document.getElementById("myTable").rows[3].cells;
+        csPopupNotFound[1].innerHTML =
+          '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>Found in script</b></a><span class="success-icon">👍</span>';
+      } else {
+        var csPopupNotFound = document.getElementById("myTable").rows[3].cells;
+        csPopupNotFound[1].innerHTML =
+          '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank">Not Found</a><span class="failure-icon">👎</span>';
+      }
+    },
+    error: function () {
+      alert("There was an error. Please try again."); // In case of server error
+    }
+  });
+
+}
+
+
 
 
 //----------Popup Script (Standalone) ------------
