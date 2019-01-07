@@ -28,11 +28,11 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 #container {
-  min-height: 96vh; /* will cover the 100% of viewport */
+ /*  min-height: 96vh; /* will cover the 100% of viewport */
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 20px; /* height of your footer */
+/* padding-bottom: 20px; /* height of your footer */
 }
 
 #loader {
@@ -55,14 +55,95 @@
   }
 }
 
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  height: 60px; /* Height of the footer */
-  background: ;
-  color: red;
+/* Tooltips & Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.tooltip{
+  font-size: 1.75rem;
+  line-height: 1.5;
+  letter-spacing: -0.05rem;
+  overflow-wrap: break-word;
+  max-width: 750px;
+  text-align: left;
+  color: white;
+}
+
+.tippy-tooltip{
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+  max-width: 500px;
+}
+
+.tooltip-tip{
+  margin: 9px;
+  line-height: 1.33;
+  font-size: 90%;
+}
+
+.tooltip-tip a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.tooltip-tip a:hover {
+  color: #808080;
+  text-decoration: underline;
+  font-size: 1.55rem;
+  letter-spacing: -0.03rem;
+
+}
+
+.tooltip-note{
+  color: #e6db74;
+}
+
+.tooltip-keyword{
+  color: #7c99db;
+}
+
+.tooltip-snippet{
+  font-family: "Courier 10 Pitch", Courier, monospace;
+  font-size: 85%;
+  text-align: left;
+  color: #808080;
+  margin: 9px;
+  border-top: 1px solid;
+  padding-top: 6px;
+  line-height: 135%;
+  overflow: scroll;
+  max-height: 270px;
+
+}
+
+.fa-info-circle{
+  position: relative;
+  top: -6px;
+  left: 0px;
+  cursor: pointer;
+}
+
+.fa-lightbulb{
+  color: #e6db74;
+  padding-right: 9px;
+}
+
+.success-icon{
+  font-size: 1.05em;
+  padding-left: 15px;
+  color: #00d843;
+  vertical-align: middle;
+}
+
+.question-icon{
+  font-size: 1.05em;
+  padding-left: 15px;
+  color: #eda600;
+  vertical-align: middle;
+}
+
+.failure-icon{
+  font-size: 1.05em;
+  padding-left: 15px;
+  color: #c93838;
+  vertical-align: middle;
 }
 
 .main-section {
@@ -72,7 +153,7 @@
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding-top: 150px;
+  padding-top: 100px;
   box-sizing: border-box;
   /* background-color: teal; debugging */
 }
@@ -95,28 +176,6 @@
   float: left;
   box-sizing: border-box;
 }
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  height: 60px; /* Height of the footer */
-  background: ;
-  color: red;
-}
-
-/* old footer
-   text-align: center;
-   margin: auto;
-   position: relative;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   color: white;
-   text-align: center;
-  }
-*/
 
 .hidden_row td {
   display: none;
@@ -318,7 +377,7 @@ h6 {
   font-size: 1.5rem;
   line-height: 1.6;
   letter-spacing: 0;
-  max-width: 960px;
+  max-width: 630px;
   text-align: center;
   margin: 0 auto;
 }
@@ -424,6 +483,31 @@ input[type="button"].button-primary:focus {
   border-color: #239ab9;
 }
 
+/* Button Group */
+.btn-group{
+  margin: auto;
+}
+.btn-group button {
+  float: left; /* Float the buttons side by side */
+}
+.btn-group button:not(:last-child) {
+ /* border-right: none;  Prevent double borders */
+}
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #888;
+}
+
+
+
+
+
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 input[type="email"],
@@ -514,7 +598,7 @@ ol ul {
   font-size: 90%;
 }
 li {
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 
 /* Code
@@ -557,16 +641,14 @@ th:first-child {
 }
 td:first-child {
   padding-right: 0px;
-  text-align: center;
-  /* background-color: teal;  for debugging */
+  text-align: left;
 }
 th:last-child {
 }
 td:last-child {
   padding-left: 0px;
-  text-align: center;
+  text-align: right;
   color: #52bad5;
-  /* background-color: lightblue; for debugging */
 }
 
 /* Spacing

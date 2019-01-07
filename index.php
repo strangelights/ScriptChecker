@@ -7,7 +7,7 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>ScriptChecker - Get Scripty</title>
-  <meta name="description" content="ScriptChecker is a utility that exposes any MailChimp-specific technologies used on websites">
+  <meta name="description" content="ScriptChecker is a utility that exposes any Mailchimp-specific technologies used on websites">
   <meta name="author" content="Josh Brookshire">
 
   <!-- Mobile Specific Metas
@@ -20,14 +20,28 @@
 
   <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css?q=y">
-  <!--<link rel="stylesheet" href="css/rolodex.css?q=d">-->
+  <link rel="stylesheet" type="text/css" href="css/navbar.css?q=1.2">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/skeleton.css?q=1.30" title="default">
+  <link rel="alternate stylesheet" type="text/css" href="css/darkmode.css?q=1.1" title="darkmode">
+  <link rel="alternate stylesheet" type="text/css" href="css/cavendish.css?q=1" title="cavendish">
+  <!--link rel="stylesheet" type="text/css" href="https://unpkg.com/tippy.js@3.3.0/dist/themes/light.css" id="default"-->
+  <link rel="alternate stylesheet" type="text/css" href="https://unpkg.com/tippy.js@3.3.0/dist/themes/google.css" id="darkmode">
+ 
 
+  
+
+  <!-- Navbar & info icons
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
   <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/script-favicon.png">
+
+<!-- CSS Styleswitcher and cookie set
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="/js/styleswitcher.js"></script>
 
   <!-- Load Jquery
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -35,6 +49,7 @@
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81785500-2"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -44,31 +59,95 @@
   </script>
 </head>
 
-<body>
+<body onload="searchParam()">
+
+  
+<!-- Navbar 
+  ––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <?php include 'php/navbar.php'?>  
+
+  <script>
+      // Responsive goodness 
+      function burgerMenu() {
+        var x = document.getElementById("topnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+    // Darkmode toggle
+    var checkbox = document.querySelector("input[name=onoffswitch]");
+    checkbox.addEventListener( 'change', themeToggle )
+    function themeToggle() {
+        if(this.checked) {
+          setActiveStyleSheet('darkmode');
+          //tippyThemeSetDark();
+        } else {
+          setActiveStyleSheet('default');
+          //tippyThemeSetLight();
+        }
+      }
+     // checks for darkmode cookie and toggles toggle switch on for consistent toggle state across a user's browser sessions 
+    if (document.cookie.split(';').filter(function(item) {return item.indexOf('style=darkmode') >= 0}).length) {
+      document.getElementById("onoffswitch").checked = true;
+    }
+  </script>
+  <script>
+    /*
+    function tippyThemeSetDark(){
+      var light = document.getElementById("tippy-light");
+      light.disabled = true;
+      var dark = document.getElementById("tippy-dark");
+      dark.disabled = false;
+      //sheet.parentNode.removeChild(sheet); 
+    }
+
+    function tippyThemeSetLight(){
+      var lighter = document.getElementById("tippy-dark");
+      lighter.disabled = true;
+      var darker = document.getElementById("tippy-dark");
+      darker.disabled = false;
+      //sheet.parentNode.removeChild(sheet); 
+    }
+
+    */
+  </script>
+
+
   <div id="container">
     <main>
-      <!-- Heading
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <br>
+
+    <!-- TESTING
+        –––––––––––––––––––––––––––––––––––––––––––––––––– 
+    
+     <a href="/ms/minesweeper.html" onclick="">Sweep</a>
+     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    
+      
       <div class="main-section">
         <h1 class="main-heading">ScriptChecker</h1>
-        <h5>A utility that exposes MailChimp-specific technologies used on websites.</h5>
-        <h6>Detect Connected Sites "mcjs" code, popup forms, embedded forms, account identification, e-commerce platforms, and
-          Google Analytics.</h6>
+        <h5>A utility that exposes Mailchimp-specific technologies used on websites.</h5>
         <br>
-
+        <br>
         <!-- Form
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="form-section">
           <form id="siteForm" action="" method="POST">
-            <span>Enter URL:&nbsp;</span>
+            <span id="enterURL">Enter URL:&nbsp;</span>
             <input id="siteURL" type="url" name="siteURL" placeholder="https://example.com" maxlength="128" required="required">
             <span>&nbsp;</span>
             <input class="button-primary" type="submit" name="submit" onclick="" value="Fetch!">
           </form>
         </div>
-
+        
         <script src="js/scripts.js"></script>
 
+        <noscript>
+          <span style="color:red; font-size:50px;"> &#9888; </span>
+          <h5>Yeah, you're going to want to enable JavaScript if you want to use this utility.</h5>
+        </noscript>
 
         <!-- AJAX CALL AND RETURN
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -76,11 +155,12 @@
         <script>
           
           $("#siteForm").on("submit", function (e) {  // on form submission call the function
-            e.preventDefault();                 // prevent the html form's submit action from occurring (see p.395 of Duckett)
+            e.preventDefault();                 // prevent the html form's submit action from occurring
             $formURL = $("#siteForm").serialize();
             $.ajax({
               url: 'php/proxy.php',
               type: 'POST',
+              dataType: 'text',
               data: $formURL,
               beforeSend: function () {   // controls ajax loader 
                 $("#loader").show();
@@ -89,13 +169,15 @@
                 $curlResponse = data;           // pass server data back into variable
                 $parser = new DOMParser();
                 $doc = $parser.parseFromString($curlResponse, "text/html");
-                console.log($doc);
+                console.log("Full html of target site: ", $doc);
                 findUID();
                 findMCJS();
+                findCSPopup();
                 findPopup();
                 findEmbedded();
                 findAnalytics();
                 findPlatform();
+                $(".description").hide();
                 $("#loader").hide();
                 $('.hidden_row td').slideDown();
 
@@ -105,14 +187,45 @@
               }
             });
           });
-          
+            
         </script>
 
-        <div id="loader"></div>
+  <!-- Allow form submission via url variable
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <script>
+          function searchParam() { 
+            let queryURL = window.location.href;
+
+            if (queryURL.match(/[?]/)){ // suppresses console alert if query isn't given directly in url
+                let queryString = window.location.href.split('?'); // isolate string to the right of the '?'
+                queryString = queryString[1].split('='); // isolate string to the right of the '=' 
+                // The above could be reduced down to a single line but splitting at both the '?' and '=' helps confirm that proper key/value syntax is used for query.
+                let decodedString = decodeURIComponent(queryString[1]); // Removes url encoding caused by Google Omnibox
+                // if (!/^https?:\/\//i.decodeString(url)) {
+                //   var url = 'http://' + url;  FIX THIS TO PREPEND HTTP IF NECESSARY
+                  // }
+                document.getElementById('siteURL').value = decodedString;
+            }
+          }
+        </script>
+
+
+        <script>
+          // When the user clicks on info icon, open the popup
+          function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+          }
+        </script>
+
+
+        
+        <h6 class="description">Detect Connected Sites "mcjs" code, popup forms, embedded forms, account identification, e-commerce platforms, and
+          Google Analytics.</h6>
 
         <!-- Table
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+      <div id="loader"></div>
         <div class="table-section">
           <table id="myTable" class="table">
             <thead>
@@ -123,27 +236,45 @@
             </thead>
             <tbody>
               <tr class="hidden_row">
-                <td>Hashed User ID</td>
+                <td>Hashed User ID 
+                  <span class="popup fas fa-info-circle" id="tooltip-hashed-user-id"></span>
+                </td>
                 <td headers="UID"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Connected Site</td>
+                <td>Connected Site 
+                  <span class="fas fa-info-circle" id="tooltip-connected-site"></span>
+                </td>
                 <td headers="MCJS"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Popup Form</td>
+                <td>Popup Form (Connected Sites) 
+                  <span class="fas fa-info-circle" id="tooltip-popup-form-connected-sites"></span>
+                </td>
                 <td headers="popup"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Embedded Form</td>
+                <td>Popup Form (Standalone) 
+                  <span class="fas fa-info-circle" id="tooltip-popup-form-standalone"></span>
+                </td>
+                <td headers="popup"></td>
+              </tr>
+              <tr class="hidden_row">
+                <td>Embedded Form 
+                  <span class="fas fa-info-circle" id="tooltip-embedded-form"></span>
+                </td>
                 <td headers="embedded"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Ecommerce Platform</td>
+                <td>Ecommerce Platform 
+                  <span class="fas fa-info-circle" id="tooltip-ecommerce-platform"></span>
+                </td>
                 <td headers="ecomm"></td>
               </tr>
               <tr class="hidden_row">
-                <td>Google Analytics</td>
+                <td>Google Analytics 
+                  <span class="fas fa-info-circle" id="tooltip-google-analytics"></span>
+                </td>
                 <td headers="GA"></td>
               </tr>
             </tbody>
@@ -151,16 +282,13 @@
         </div>
       </div>
     </main>
-    <footer>
-      <div id="footer">
-        <a href="https://github.com/strangelights/ScriptChecker">
-          <img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="GitHub Logo" title="Git in the car nerd!" style="height:25px;">
-          <p>
-            <a href="mailto:jbrookshire@rsglab.com?subject=ScriptChecker%20Bug%20Report">Report an issue</a>
-          </p>
-      </div>
-    </footer>
   </div>
-</body>
+    
+  <!-- Tooltip Library 
+    ––––––––––––––––––––––––––––––––––––––––––––––– -->
 
+  <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+  <script src="/js/tooltips.js"></script>
+
+</body>
 </html>
