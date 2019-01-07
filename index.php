@@ -41,7 +41,7 @@
 
 <!-- CSS Styleswitcher and cookie set
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="/js/styleswitcher.js"></script>
+  <script src="js/styleswitcher.js"></script>
 
   <!-- Load Jquery
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -266,7 +266,7 @@
     ––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
-  <script src="/js/tooltips.js"></script>
+  <script src="js/tooltips.js"></script>
 
 </body>
 </html>
