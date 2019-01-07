@@ -16,7 +16,8 @@ Alternately accessible via:
 https://scriptchecker.herokuapp.com/
 
 #### Changelog
-v1.0 - Release is live!
+v1.0 
+v2.0.0 - Release is live! Updates coming soon.
 
 #### Author
 * Josh Brookshire
