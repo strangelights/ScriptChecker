@@ -169,7 +169,6 @@
                 $curlResponse = data;           // pass server data back into variable
                 $parser = new DOMParser();
                 $doc = $parser.parseFromString($curlResponse, "text/html");
-                console.log("Full html of target site: ", $doc);
                 findUID();
                 findMCJS();
                 findCSPopup();
