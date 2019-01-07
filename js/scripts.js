@@ -114,7 +114,7 @@ function findCSPopup(){
       if (csPopupFound == "popup_form.installed = true"){
         var csPopupNotFound = document.getElementById("myTable").rows[3].cells;
         csPopupNotFound[1].innerHTML =
-          '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>Found in script</b></a><span class="success-icon">👍</span>';
+          '<a href="https://asta.rsglab.com/projects/SpeedRacer/12monkeys/?q=popup+form" target="_blank"><b>Found in mcjs</b></a><span class="success-icon">👍</span>';
       } else {
         var csPopupNotFound = document.getElementById("myTable").rows[3].cells;
         csPopupNotFound[1].innerHTML =
@@ -127,8 +127,6 @@ function findCSPopup(){
   });
 
 }
-
-
 
 
 //----------Popup Script (Standalone) ------------

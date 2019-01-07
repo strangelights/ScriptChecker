@@ -51,7 +51,14 @@
 	// Popup Form (Connected Sites) Tooltip:
 
     tippy('#tooltip-popup-form-connected-sites', { 
-      content: '<div class="tooltip">I\'m a Popup Form tooltip!</div>'
+	  content: 
+	  '<div class="tooltip">' +
+	  
+	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>In addition to the standalone code, popup forms can be added through the Connected Sites script. To confirm if a form is being added through this method, use the <a href="https://developers.google.com/web/tools/chrome-devtools/sources" target="_blank">Sources</a> tab in a browser\'s dev tools to view the chimpstatic.com script.</div>' +
+
+	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>The content of this file can vary widely based on what feature are enabled via Connected Sites, but the value of "true" in the line <span class="tooltip-keyword">window.$mcSite.popup_form.installed = true;</span> should be the only relevant code to confirm the presence of a popup form.</div>' +
+	  
+	  '</div>'
 	})
 
 	// Popup Form (Standalone) Tooltip:
@@ -132,6 +139,9 @@
 	  '<span class="tooltip-keyword">Drupal</span>' + ', '+
 	  'and ' +
 	  '<span class="tooltip-keyword">Square</span>' + '.'+
+	  '</div>' +
+
+	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>Not detecting a known platform? Submit feedback!</div>' +
 
 	  '</div>'
 
