@@ -93,28 +93,7 @@
       document.getElementById("onoffswitch").checked = true;
     }
   </script>
-  <script>
-    /*
-    function tippyThemeSetDark(){
-      var light = document.getElementById("tippy-light");
-      light.disabled = true;
-      var dark = document.getElementById("tippy-dark");
-      dark.disabled = false;
-      //sheet.parentNode.removeChild(sheet); 
-    }
-
-    function tippyThemeSetLight(){
-      var lighter = document.getElementById("tippy-dark");
-      lighter.disabled = true;
-      var darker = document.getElementById("tippy-dark");
-      darker.disabled = false;
-      //sheet.parentNode.removeChild(sheet); 
-    }
-
-    */
-  </script>
-
-
+ 
   <div id="container">
     <main>
     <br>
