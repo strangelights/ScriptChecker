@@ -54,7 +54,7 @@
 	  content: 
 	  '<div class="tooltip">' +
 	  
-	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>In addition to the standalone code, popup forms can be added through the Connected Sites script. To confirm if a form is being added through this method, use the <a href="https://developers.google.com/web/tools/chrome-devtools/sources" target="_blank">Sources</a> tab in a browser\'s dev tools to view the chimpstatic.com script.</div>' +
+	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>In addition to the standalone code, popup forms can be added through the Connected Sites script. To confirm if a form is being added through this method, use the <a href="https://developers.google.com/web/tools/chrome-devtools/sources" target="_blank">Sources</a> tab in a browser\'s dev tools to view the chimpstatic.com source file.</div>' +
 
 	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>The content of this file can vary widely based on what feature are enabled via Connected Sites, but the value of "true" in the line <span class="tooltip-keyword">window.$mcSite.popup_form.installed = true;</span> should be the only relevant code to confirm the presence of a popup form.</div>' +
 	  
