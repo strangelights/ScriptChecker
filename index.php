@@ -26,9 +26,6 @@
   <link rel="alternate stylesheet" type="text/css" href="css/darkmode.css?q=1.1" title="darkmode">
   <link rel="alternate stylesheet" type="text/css" href="https://unpkg.com/tippy.js@3.3.0/dist/themes/google.css" id="darkmode">
  
-
-  
-
   <!-- Navbar & info icons
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">

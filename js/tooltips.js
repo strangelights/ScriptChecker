@@ -26,9 +26,12 @@
 	  '<div class="tooltip">' +
 
 	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>The hashed User ID can be found within the Connected Sites script as the first of two 25-digit hexdecimal strings that make up part of the chimpstatic.com url.</div>' +
-	
+	  
+	  '<div class="tooltip-tip"><i class="far fa-lightbulb"></i>If a User ID is detected, click the linked ID in the column on the right to view the account in MCAdmin.</div>' +
+	 
 	  '<div class="tooltip-snippet">&lt;script id=&quot;mcjs&quot;&gt;!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,&quot;script&quot;,&quot;https://chimpstatic.com/mcjs-connected/js/users/<span class="tooltip-note">219ec3282ae742b42f62a07e8</span>/f660b56ff295be3ad55969481.js&quot;);&lt;/script&gt;</div>' +
 	  '</div>' 
+
 	})
 	
 	// Connected Sites Tooltip:
