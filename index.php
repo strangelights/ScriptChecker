@@ -24,8 +24,6 @@
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/skeleton.css?q=1.30" title="default">
   <link rel="alternate stylesheet" type="text/css" href="css/darkmode.css?q=1.1" title="darkmode">
-  <link rel="alternate stylesheet" type="text/css" href="css/cavendish.css?q=1" title="cavendish">
-  <!--link rel="stylesheet" type="text/css" href="https://unpkg.com/tippy.js@3.3.0/dist/themes/light.css" id="default"-->
   <link rel="alternate stylesheet" type="text/css" href="https://unpkg.com/tippy.js@3.3.0/dist/themes/google.css" id="darkmode">
  
 
